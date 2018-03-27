@@ -1,0 +1,173 @@
+%  ========================================================================
+%  Copyright (c) 1985 The University of Washington
+%
+%  Licensed under the Apache License, Version 2.0 (the "License");
+%  you may not use this file except in compliance with the License.
+%  You may obtain a copy of the License at
+%
+%      http://www.apache.org/licenses/LICENSE-2.0
+%
+%  Unless required by applicable law or agreed to in writing, software
+%  distributed under the License is distributed on an "AS IS" BASIS,
+%  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%  See the License for the specific language governing permissions and
+%  limitations under the License.
+%  ========================================================================
+%    Printed in twoside style now that that's allowed
+%
+ 
+\documentclass[11pt, proquest]{uwthesis}
+ 
+% The following line would print the thesis in a postscript font 
+\usepackage{xspace}
+
+\usepackage[sectionbib]{natbib}
+\usepackage{chapterbib}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{xspace}
+\usepackage{hyperref}
+\usepackage{aas_macros}
+\usepackage{appendix}
+\usepackage{etoolbox}
+
+% \def\bibpreamble{\protect\addcontentsline{toc}{chapter}{Bibliography}}
+
+\AtBeginEnvironment{subappendices}{%
+  \addtocontents{toc}{\protect\addvspace{10pt}Appendices}
+}
+\makeatletter
+\patchcmd{\@chapter}{\protect\numberline{\thechapter}#1}
+{\@chapapp~\thechapter: #1}{}{}
+\makeatother
+
+\setcounter{tocdepth}{1}  % Print the chapter and sections to the toc
+ 
+
+% ==========   Local defs and mods
+%
+
+% --- sample stuff only -----
+% These format the sample code in this document
+
+\usepackage{alltt}  % 
+\newenvironment{demo}
+  {\begin{alltt}\leftskip3em
+     \def\\{\ttfamily\char`\\}%
+     \def\{{\ttfamily\char`\{}%
+     \def\}{\ttfamily\char`\}}}
+  {\end{alltt}}
+ 
+% metafont font.  If logo not available, use the second form
+%
+% \font\mffont=logosl10 scaled\magstep1
+\let\mffont=\sf
+% --- end-of-sample-stuff ---
+ 
+
+\begin{document}
+ 
+% ==========   Preliminary pages
+%
+% ( revised 2012 for electronic submission )
+%
+
+\prelimpages
+ 
+%
+% ----- copyright and title pages
+%
+\Title{Thesis Title}
+\Author{Brett Morris}
+\Year{2019}
+\Program{Astronomy and Astrobiology}
+
+\Chair{Eric Agol}{}{Astronomy Department}
+\Signature{Suzanne L. Hawley}
+
+\copyrightpage
+
+\titlepage
+
+
+\setcounter{page}{-1}
+\abstract{%
+This is where an abstract will go.
+}
+ 
+%
+% ----- contents & etc.
+%
+\tableofcontents
+\listoffigures
+%\listoftables  % I have no tables
+ 
+
+% ----- glossary 
+%
+% \chapter*{Glossary}      % starred form omits the `chapter x'
+% \addcontentsline{toc}{chapter}{Glossary}
+% \thispagestyle{plain}
+% %
+% \begin{glossary}
+% \item[argument] replacement text which customizes a \LaTeX\ macro for
+% \end{glossary}
+ 
+% ----- acknowledgments
+\acknowledgments{% \vskip2pc
+  % {\narrower\noindent
+  The author wishes to express sincere appreciation to...
+}
+
+%
+% ----- dedication
+%
+\dedication{\begin{center}
+\vspace{1 cm}to Rebecca, who came with me on this adventure; 
+
+\vspace{1cm} and to my parents, who sent me out on it. \end{center}}
+
+%
+% end of the preliminary pages
+
+%
+% ==========      Text pages
+%
+
+\textpages
+ 
+% ========== Chapter 1
+ 
+\chapter{The Active Latitudes of HAT-P-11: Evidence for a Solar-like Dynamo}
+
+\input{stsp_hat_p_11/accepted.tex}
+
+\chapter{The Chromospheric Activity of HAT-P-11: an Unusually Active, Planet-hosting K Dwarf}
+
+\input{sindex/arxiv.tex}
+
+\chapter{Spotting Stellar Activity Cycles with Gaia}
+
+\input{gaia/arxiv.tex}
+
+\printendnotes
+
+%
+% ==========   Bibliography
+%
+\nocite{*}   % include everything in the uwthesis.bib file
+%\bibliographystyle{plain}
+
+%
+% ==========   Appendices
+%
+\appendix
+\raggedbottom\sloppy
+ 
+% ========== Appendix A
+
+\vita{Brett Morris grew up on Long Island, in New York. He graduated from the University of Maryland with BS in Astronomy with High Honors, and a BS in Physics. He worked as a research associate at NASA's Goddard Space Flight Center before attending the University of Washington for his dual-title PhD in Astronomy and Astrobiology.}
+
+\end{document}
