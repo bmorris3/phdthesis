@@ -82,28 +82,7 @@
 \makeatother
 
 \setcounter{tocdepth}{1}  % Print the chapter and sections to the toc
- 
 
-% ==========   Local defs and mods
-%
-
-% --- sample stuff only -----
-% These format the sample code in this document
-
-%\usepackage{alltt}  % 
-%\newenvironment{demo}
-%  {\begin{alltt}\leftskip3em
-%     \def\\{\ttfamily\char`\\}%
-%     \def\{{\ttfamily\char`\{}%
-%     \def\}{\ttfamily\char`\}}}
-%  {\end{alltt}}
-% 
-% metafont font.  If logo not available, use the second form
-%
-% \font\mffont=logosl10 scaled\magstep1
-%\let\mffont=\sf
-% --- end-of-sample-stuff ---
- 
 
 \begin{document}
  
@@ -163,7 +142,7 @@ This is where an abstract will go.
 % ----- dedication
 %
 \dedication{\begin{center}
-\vspace{1 cm}to Rebecca, who came with me on this adventure; 
+\vspace{1 cm}to Rebecca, my best friend, who came with me on this adventure; 
 
 \vspace{1cm} and to my parents, who sent me out on it. \end{center}}
 
@@ -176,6 +155,10 @@ This is where an abstract will go.
 
 \textpages
 
+\chapter{Introduction}
+
+\input{intro/introduction.tex}
+
 \chapter{astroplan: an Open Source Observation Planning Package in Python}
 
 \input{astroplan/arxiv.tex}
@@ -184,7 +167,8 @@ This is where an abstract will go.
 
 \input{stsp_hat_p_11/accepted.tex}
 
-\section*{Update: Ground-based spot occultations of HAT-P-11}
+\section{Update: Ground-based spot occultation photometry of HAT-P-11}
+
 \input{hat11rn/main.tex}
 
 \chapter{The Chromospheric Activity of HAT-P-11: an Unusually Active, Planet-hosting K Dwarf}
@@ -203,6 +187,8 @@ This is where an abstract will go.
 
 \input{trappist1_rn/arxiv.tex}
 
+\chapter{Discussion and Conclusion}
+
 \printendnotes
 
 %
@@ -210,7 +196,7 @@ This is where an abstract will go.
 %
 \nocite{*}   % include everything in the uwthesis.bib file
 \bibliographystyle{apj}
-\bibliography{./stsp_hat_p_11/bibliography,./sindex/sindex_bibliography,./gaia/gaia_bib,./trappist1_bright/t1bright_bib,./trappist1_rn/t1rn_bib,./hat11rn/bibliography,./astroplan/bibliography}
+\bibliography{./intro/bibliography,./stsp_hat_p_11/bibliography,./sindex/sindex_bibliography,./gaia/gaia_bib,./trappist1_bright/t1bright_bib,./trappist1_rn/t1rn_bib,./hat11rn/bibliography,./astroplan/bibliography}
 
 %
 % ==========   Appendices
