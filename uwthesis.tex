@@ -21,8 +21,11 @@
 % The following line would print the thesis in a postscript font 
 \usepackage{xspace}
 
-\usepackage[sectionbib]{natbib}
+%\usepackage[sectionbib]{natbib}
+
+\usepackage[sort&compress]{natbib}  % square,numbers,
 \usepackage{chapterbib}
+\usepackage{multibib}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{graphicx}
@@ -33,7 +36,7 @@
 \usepackage{appendix}
 \usepackage{etoolbox}
 
-% \def\bibpreamble{\protect\addcontentsline{toc}{chapter}{Bibliography}}
+%\def\bibpreamble{\protect\addcontentsline{toc}{chapter}{Bibliography}}
 
 \AtBeginEnvironment{subappendices}{%
   \addtocontents{toc}{\protect\addvspace{10pt}Appendices}
@@ -52,18 +55,18 @@
 % --- sample stuff only -----
 % These format the sample code in this document
 
-\usepackage{alltt}  % 
-\newenvironment{demo}
-  {\begin{alltt}\leftskip3em
-     \def\\{\ttfamily\char`\\}%
-     \def\{{\ttfamily\char`\{}%
-     \def\}{\ttfamily\char`\}}}
-  {\end{alltt}}
- 
+%\usepackage{alltt}  % 
+%\newenvironment{demo}
+%  {\begin{alltt}\leftskip3em
+%     \def\\{\ttfamily\char`\\}%
+%     \def\{{\ttfamily\char`\{}%
+%     \def\}{\ttfamily\char`\}}}
+%  {\end{alltt}}
+% 
 % metafont font.  If logo not available, use the second form
 %
 % \font\mffont=logosl10 scaled\magstep1
-\let\mffont=\sf
+%\let\mffont=\sf
 % --- end-of-sample-stuff ---
  
 
@@ -79,8 +82,8 @@
 %
 % ----- copyright and title pages
 %
-\Title{Thesis Title}
-\Author{Brett Morris}
+\Title{Photometric and Spectroscopic Perspectives on Stellar Magnetic Activity and Its Effect on Exoplanet Characterization}
+\Author{Brett M. Morris}
 \Year{2019}
 \Program{Astronomy and Astrobiology}
 
@@ -144,6 +147,10 @@ This is where an abstract will go.
 
 \input{stsp_hat_p_11/accepted.tex}
 
+\chapter*{Update: Ground-based spot occultations of HAT-P-11}
+
+\input{hat11rn/main.tex}
+
 \chapter{The Chromospheric Activity of HAT-P-11: an Unusually Active, Planet-hosting K Dwarf}
 
 \input{sindex/arxiv.tex}
@@ -152,13 +159,22 @@ This is where an abstract will go.
 
 \input{gaia/arxiv.tex}
 
+\chapter{Possible Bright Starspots of TRAPPIST-1}
+
+\input{trappist1_bright/arxiv.tex}
+
+\chapter{Ground-based Transit Times of TRAPPIST-1 b and c}
+
+\input{trappist1_rn/arxiv.tex}
+
 \printendnotes
 
 %
 % ==========   Bibliography
 %
 \nocite{*}   % include everything in the uwthesis.bib file
-%\bibliographystyle{plain}
+\bibliographystyle{apj}
+\bibliography{./stsp_hat_p_11/bibliography,./sindex/sindex_bibliography,./gaia/gaia_bib,./trappist1_bright/t1bright_bib,./trappist1_rn/t1rn_bib,./hat11rn/bibliography}
 
 %
 % ==========   Appendices

@@ -1,0 +1,147 @@
+%% This is emulateapj reformatting of the AASTEX sample document
+%%
+% \documentclass{rnaastex}
+
+% \usepackage{amsmath}
+% \usepackage{url}
+% \usepackage{xspace}
+% \usepackage{placeins}
+
+\newcommand{\sdssr}{SDSS \textsl{r}\xspace}
+% \newcommand{\kepler}{\textsl{Kepler}\xspace}
+
+% \begin{document}
+
+% \title{Large Starspot Groups on HAT-P-11 in Activity Cycle 1}
+
+% \author[0000-0003-2528-3409]{Brett M. Morris}
+% \affiliation{Astronomy Department, University of Washington, Seattle, WA 98195, USA}
+
+% \author{Suzanne L. Hawley}
+% \affiliation{Astronomy Department, University of Washington, Seattle, WA 98195, USA}
+
+% \author{Leslie Hebb}
+% \affiliation{Physics Department, Hobart and William Smith Colleges, Geneva, NY 14456, USA}
+
+% \email{bmmorris@uw.edu}
+% %\objectname{HAT-P-11}
+
+% \vspace{-2cm}
+
+\section{Background}
+HAT-P-11 is a planet-hosting K4V star in the \kepler field, with an activity cycle that bear similarities to the Sun's \citep{bakos2010, Sanchis-Ojeda2011, Morris2017a}. The chromospheric activity of HAT-P-11 passed through minimum in 2016, and seems to be rising back towards maximum \citep{Morris2017b}. In late 2017, HAT-P-11's $S$-index had returned to $S\sim0.55$, similar to the activity level in the previous cycle (Cycle 0). We report ground-based observations to measure the starspots of HAT-P-11 in its second observed magnetic activity cycle (hereafter Cycle 1). Spot occultations have not previously been observed at this phase of the HAT-P-11 activity cycle.  
+
+\section{Observations}
+
+We gathered photometry of HAT-P-11 and six comparison stars through a holographic diffuser on the ARCTIC imager mounted on the Astrophysical Research Consortium (ARC) 3.5 m Telescope at Apache Point Observatory (APO) \citep{Huehnerhoff2016}. The diffuser enables precision photometry from the ground \citep{Stefansson2017}. We observed a transit of HAT-P-11 b using 2$\times$2 binning 10 second exposures in \sdssr on 2017 October 30 UTC. We normalize the HAT-P-11 light curve by a mean comparison star, which is computed from a linear combination of the following regressors: the fluxes of each comparison star, the target centroid pixel $x$ and $y$ coordinates, median sky background, air humidity, air pressure, and airmass -- see \citet{Morris2018a} for detailed explanation of the photometric technique. The standard deviation of the target flux before�transit is 400 ppm in one minute bins, $\sim4\times$ larger than \kepler's photometric precision (90 ppm).
+
+\section{Starspot properties}
+
+
+In Figure~\ref{fig}, the transit light curve shows a occultation of a large dark feature in the southern hemisphere before mid-transit, and a smaller dark feature in the northern hemisphere after mid-transit. We noted in \citet{Morris2017a} that adjacent spot occultations could give the appearance of much larger spots, and we emphasize here that each of these apparent spot occultations could in fact be occultations of groups of spots.  If these anomalies are in fact occultations of individual spots, they would be among the largest observed on HAT-P-11. However, given the similarities between the spots observed during the \kepler years \citep{Morris2017a} and sunspots \citep{Solanki2003}, we suggest that we are likely observing occultations of large spot groups appearing at the beginning of Cycle 1. 
+
+Fits with the \texttt{STSP} photometric spot model \citep{Morris2017a, Hebb2018} reveal the area coverage of spots within the transit chord for UTC 2017-10-30 is 14\% --- which makes this transit the most spotted HAT-P-11 transit observed to date. From 2009-2013, we measured the fraction of the transit chord occupied by spots in \citet{Morris2017a} to vary between 0.5-10\%. 
+
+\begin{figure}
+\begin{center}
+\begin{minipage}{6in}
+  \centering
+  \raisebox{-0.5\height}{\includegraphics[scale=0.6]{hat11rn/transit_20171030.pdf}}
+  \hspace*{.2 in}
+  \raisebox{-0.5\height}{\includegraphics[scale=0.35]{hat11rn/schematic.pdf}}
+\end{minipage}
+\caption{\textsl{Left}: Transit light curve at 10 second cadence (gray squares) and one minute bins (black circles), with the maximum-likelihood spot model from \texttt{STSP} (red curve). The scatter increases at later times due to high airmass. \textsl{Right}: schematic illustration of a possible spot group configuration consistent with the APO occultation photometry. See Figure 3 of \citet{Morris2017a} for a more detailed explanation of the notation.
+\label{fig}}
+\end{center}
+\end{figure}
+
+% \acknowledgments
+
+% We thank Gudmundur Stefansson and Yiting Li for productive conversations. Based on observations obtained with the APO 3.5-meter telescope, which is owned and operated by ARC.
+
+% \software{\texttt{astropy} \citep{Astropy2013}, \texttt{photutils} \citep{Bradley2016}, \texttt{friedrich} \citep{Morris2017a}, \texttt{astroplan} \citep{astroplan}, STSP \citep{Hebb2018}, \texttt{astroscrappy} \citep{astroscrappy}}
+
+%\facility{APO/ARC 3.5m}
+
+%\bibliography{bibliography.bib}
+% \begin{thebibliography}{}
+% \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+% \providecommand{\url}[1]{\href{#1}{#1}}
+
+% \bibitem[{{Astropy Collaboration} {et~al.}(2013){Astropy Collaboration},
+%   {Robitaille}, {Tollerud}, {Greenfield}, {Droettboom}, {Bray}, {Aldcroft},
+%   {Davis}, {Ginsburg}, {Price-Whelan}, {Kerzendorf}, {Conley}, {Crighton},
+%   {Barbary}, {Muna}, {Ferguson}, {Grollier}, {Parikh}, {Nair}, {Unther},
+%   {Deil}, {Woillez}, {Conseil}, {Kramer}, {Turner}, {Singer}, {Fox}, {Weaver},
+%   {Zabalza}, {Edwards}, {Azalee Bostroem}, {Burke}, {Casey}, {Crawford},
+%   {Dencheva}, {Ely}, {Jenness}, {Labrie}, {Lian Lim}, {Pierfederici},
+%   {Pontzen}, {Ptak}, {Refsdal}, {Servillat}, \& {Streicher}}]{Astropy2013}
+% {Astropy Collaboration}, {Robitaille}, T.~P., {Tollerud}, E.~J., {et~al.} 2013,
+%   \aap, 558, A33
+
+% \bibitem[{{Bakos} {et~al.}(2010){Bakos}, {Torres}, {P{\'a}l}, {Hartman},
+%   {Kov{\'a}cs}, {Noyes}, {Latham}, {Sasselov}, {Sip{\H o}cz}, {Esquerdo},
+%   {Fischer}, {Johnson}, {Marcy}, {Butler}, {Isaacson}, {Howard}, {Vogt},
+%   {Kov{\'a}cs}, {Fernandez}, {Mo{\'o}r}, {Stefanik}, {L{\'a}z{\'a}r}, {Papp},
+%   \& {S{\'a}ri}}]{Bakos2010}
+% {Bakos}, G.~{\'A}., {Torres}, G., {P{\'a}l}, A., {et~al.} 2010, \apj, 710, 1724
+
+% \bibitem[{{Bradley} {et~al.}(2016){Bradley}, {Sipocz}, {Robitaille},
+%   {Tollerud}, {Deil}, {Vin{\'{\i}}cius}, {Barbary}, {G{\"u}nther}, {Bostroem},
+%   {Droettboom}, {Bray}, {Bratholm}, {Pickering}, {Craig}, {Pascual}, {Greco},
+%   {Donath}, {Kerzendorf}, {Littlefair}, {Barentsen}, {D'Eugenio}, \&
+%   {Weaver}}]{Bradley2016}
+% {Bradley}, L., {Sipocz}, B., {Robitaille}, T., {et~al.} 2016, {Photutils:
+%   Photometry tools}, Astrophysics Source Code Library, , , ascl:1609.011
+
+% \bibitem[{{Hebb} {et~al.}(2018){Hebb}, {Rohn}, \& {collaborators}}]{Hebb2018}
+% {Hebb}, L., {Rohn}, G., D.~J. R. A. M. B.~M., \& {collaborators}. 2018
+
+% \bibitem[{{Huehnerhoff} {et~al.}(2016){Huehnerhoff}, {Ketzeback}, {Bradley},
+%   {Dembicky}, {Doughty}, {Hawley}, {Johnson}, {Klaene}, {Leon}, {McMillan},
+%   {Owen}, {Sayres}, {Sheen}, \& {Shugart}}]{Huehnerhoff2016}
+% {Huehnerhoff}, J., {Ketzeback}, W., {Bradley}, A., {et~al.} 2016, in \procspie,
+%   Vol. 9908, Ground-based and Airborne Instrumentation for Astronomy VI, 99085H
+
+% \bibitem[{{Morris} {et~al.}(2018){Morris}, {Agol}, \& {Hawley}}]{zwasa}
+% {Morris}, B.~M., {Agol}, E., \& {Hawley}, S.~L. 2018, RNAAS
+
+% \bibitem[{{Morris} {et~al.}(2017{\natexlab{a}}){Morris}, {Hebb}, {Davenport},
+%   {Rohn}, \& {Hawley}}]{Morris2017a}
+% {Morris}, B.~M., {Hebb}, L., {Davenport}, J.~R.~A., {Rohn}, G., \& {Hawley},
+%   S.~L. 2017{\natexlab{a}}, \apj, 846, 99
+
+% \bibitem[{{Morris} {et~al.}(2017{\natexlab{b}}){Morris}, {Hawley}, {Hebb},
+%   {Sakari}, {Davenport}, {Isaacson}, {Howard}, {Montet}, \&
+%   {Agol}}]{Morris2017b}
+% {Morris}, B.~M., {Hawley}, S.~L., {Hebb}, L., {et~al.} 2017{\natexlab{b}},
+%   \apj, 848, 58
+
+% \bibitem[{{Morris} {et~al.}(2017{\natexlab{c}}){Morris}, {Tollerud}, {Sipocz},
+%   {Deil}, {Douglas}, {Berlanga Medina}, {Vyhmeister}, {Smith}, {Littlefair},
+%   {Price-Whelan}, {Gee}, \& {Jeschke}}]{astroplan}
+% {Morris}, B.~M., {Tollerud}, E., {Sipocz}, B., {et~al.} 2017{\natexlab{c}},
+%   ArXiv e-prints, arXiv:1712.09631
+
+% \bibitem[{{Sanchis-Ojeda} \& {Winn}(2011)}]{sanchis-ojeda2011}
+% {Sanchis-Ojeda}, R., \& {Winn}, J.~N. 2011, \apj, 743, 61
+
+% \bibitem[{{Solanki}(2003)}]{Solanki2003}
+% {Solanki}, S.~K. 2003, \aapr, 11, 153
+
+% \bibitem[{{Stefansson} {et~al.}(2017){Stefansson}, {Mahadevan}, {Hebb},
+%   {Wisniewski}, {Huehnerhoff}, {Morris}, {Halverson}, {Zhao}, {Wright},
+%   {O'rourke}, {Knutson}, {Hawley}, {Kanodia}, {Li}, {Hagen}, {Liu}, {Beatty},
+%   {Bender}, {Robertson}, {Dembicky}, {Gray}, {Ketzeback}, {McMillan}, \&
+%   {Rudyk}}]{Stefansson2017}
+% {Stefansson}, G., {Mahadevan}, S., {Hebb}, L., {et~al.} 2017, \apj, 848, 9
+
+% \bibitem[{{van Dokkum} {et~al.}(2012){van Dokkum}, {Bloom}, \&
+%   {Tewes}}]{astroscrappy}
+% {van Dokkum}, P.~G., {Bloom}, J., \& {Tewes}, M. 2012, {L.A.Cosmic: Laplacian
+%   Cosmic Ray Identification}, Astrophysics Source Code Library, , ,
+%   ascl:1207.005
+
+% \end{thebibliography}
+
+% \end{document}

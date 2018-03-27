@@ -17,7 +17,7 @@
 % \usepackage{url}
 
 % \newcommand{\kepler}{\textsl{Kepler}\xspace}
-% \newcommand{\tablenotemark}[1]{$^{#1}$}
+\newcommand{\tablenotemark}[1]{$^{#1}$}
 % \title[Stellar Activity with Gaia]{Spotting Stellar Activity Cycles in Gaia Astrometry}
 
 % \author[Morris et al.]{
@@ -290,7 +290,7 @@ Suppose KIC 7174505-like stars have an activity cycle period $P_{\mathrm{cyc}} \
 
 In Table~\ref{tab:stars} we list the statistical significance of the difference between the distribution of centroids near active maximum and minimum, for the bright TGAS sample in an extended 10 year Gaia mission. The stars considered show insignificant detections of an activity cycle in this highly-optimized scenario for detecting activity cycles through Gaia astrometry, where we assumed a highly asymmetric spot distribution and an ideal stellar inclination of $i_s = 90^\circ$. We comment on the properties of the star with the best detection of any activity, AX Mic, in the next section.
 
-The activity cycle detection confidences in Table~\ref{tab:stars} assume that we can unambiguously split the astrometric measurements into maximum and minimum activity subsets. In practice, we will not know the phase of each star's activity cycle \textit{a priori}. However, Gaia radial velocity spectra of the calcium infrared triplet may allow us to independently identify phases in activity cycles. The calcium infrared triplet is a calibrated indicator of chromospheric activity \citep[see e.g.:][]{Chmielewski2000, Cenarro2001, Cauzzi2008, Zerjal2013, BoroSaikia2016, Robertson2016, Martin2017}. True cycles in astrometric jitter should be accompanied by increased emission in the infrared triplet \citep{Andretta2005, Busa2007}. A possible third independent measurement of activity cycles from Gaia is the time-series photometry it will collect, which may yield long-baseline photometry similar to the \kepler full-frame images, which \citet{montet2017} used to search for activity cycles in \kepler stars.
+The activity cycle detection confidences in Table~\ref{tab:stars} assume that we can unambiguously split the astrometric measurements into maximum and minimum activity subsets. In practice, we will not know the phase of each star's activity cycle \textit{a priori}. However, Gaia radial velocity spectra of the calcium infrared triplet may allow us to independently identify phases in activity cycles. The calcium infrared triplet is a calibrated indicator of chromospheric activity \citep[see e.g.:][]{Chmielewski2000, Cenarro2001, Cauzzi2008, Zerjal2013, BoroSaikia2016, Robertson2016, Martin2017}. True cycles in astrometric jitter should be accompanied by increased emission in the infrared triplet \citep{Andretta2005, Busa2007}. A possible third independent measurement of activity cycles from Gaia is the time-series photometry it will collect, which may yield long-baseline photometry similar to the \kepler full-frame images, which \citet{Montet2017} used to search for activity cycles in \kepler stars.
 
 \subsection{Sensitivity to spot coverage}
 
@@ -407,8 +407,7 @@ these ideas for future investigation.
 % This research has made use of NASA's Astrophysics Data System. This research has made use of the SIMBAD database, operated at CDS, Strasbourg, France \citep{Wenger2000}. This research has made use of the VizieR catalogue access tool, CDS, Strasbourg, France \citep{Ochsenbein2000}. This research made use of the cross-match service provided by CDS, Strasbourg.
 
 % \bibliographystyle{mnras}
-\bibliographystyle{apj}
-\bibliography{gaia/gaia_bibliography}
+%\bibliographystyle{apj}
 
 % \begin{thebibliography}{}
 % \makeatletter
