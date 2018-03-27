@@ -36,11 +36,46 @@
 \usepackage{appendix}
 \usepackage{etoolbox}
 
+\usepackage{listings}
+\usepackage{color}
+\usepackage{inconsolata}
+
+\usepackage[footnote,printonlyused]{acronym}
+\usepackage{scrextend}
+\deffootnote[1.0em]{1em}{0em}{\textsuperscript{\thefootnotemark}\,\enskip}
+
+\newcommand{\astroplan}{\texttt{astroplan}\xspace}
+\newcommand{\astropy}{\texttt{astropy}\xspace}
+\newcommand{\pyephem}{\texttt{pyephem}\xspace}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\renewcommand{\lstlistingname}{Example}
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+}
+
 %\def\bibpreamble{\protect\addcontentsline{toc}{chapter}{Bibliography}}
 
-\AtBeginEnvironment{subappendices}{%
-  \addtocontents{toc}{\protect\addvspace{10pt}Appendices}
-}
+%\AtBeginEnvironment{subappendices}{%
+%  \addtocontents{toc}{\protect\addvspace{10pt}Appendices}
+%}
+
 \makeatletter
 \patchcmd{\@chapter}{\protect\numberline{\thechapter}#1}
 {\@chapapp~\thechapter: #1}{}{}
@@ -82,7 +117,7 @@
 %
 % ----- copyright and title pages
 %
-\Title{Photometric and Spectroscopic Perspectives on Stellar Magnetic Activity and Its Effect on Exoplanet Characterization}
+\Title{Photometric, Spectroscopic and Astrometric Perspectives on Stellar Magnetic Activity, and Its Effect on Exoplanet Characterization}
 \Author{Brett M. Morris}
 \Year{2019}
 \Program{Astronomy and Astrobiology}
@@ -140,15 +175,16 @@ This is where an abstract will go.
 %
 
 \textpages
- 
-% ========== Chapter 1
- 
+
+\chapter{astroplan: an Open Source Observation Planning Package in Python}
+
+\input{astroplan/arxiv.tex}
+
 \chapter{The Active Latitudes of HAT-P-11: Evidence for a Solar-like Dynamo}
 
 \input{stsp_hat_p_11/accepted.tex}
 
-\chapter*{Update: Ground-based spot occultations of HAT-P-11}
-
+\section*{Update: Ground-based spot occultations of HAT-P-11}
 \input{hat11rn/main.tex}
 
 \chapter{The Chromospheric Activity of HAT-P-11: an Unusually Active, Planet-hosting K Dwarf}
@@ -174,7 +210,7 @@ This is where an abstract will go.
 %
 \nocite{*}   % include everything in the uwthesis.bib file
 \bibliographystyle{apj}
-\bibliography{./stsp_hat_p_11/bibliography,./sindex/sindex_bibliography,./gaia/gaia_bib,./trappist1_bright/t1bright_bib,./trappist1_rn/t1rn_bib,./hat11rn/bibliography}
+\bibliography{./stsp_hat_p_11/bibliography,./sindex/sindex_bibliography,./gaia/gaia_bib,./trappist1_bright/t1bright_bib,./trappist1_rn/t1rn_bib,./hat11rn/bibliography,./astroplan/bibliography}
 
 %
 % ==========   Appendices
