@@ -159,9 +159,9 @@ The projected spin-orbit angle $\lambda$ has been constrained with the Rossiter-
 Using a different approach, \citet{Sanchis-Ojeda2011} noted that the distribution of starspots on HAT-P-11 resembled active latitudes like those of the Sun. The authors fitted the spot latitude distribution to solve for the stellar inclination by requiring the active latitudes to be symmetric across the stellar equator. They discussed two possible stellar orientations that explain the apparent active latitudes which they called the ``pole-on'' and ``equator-on'' solutions. In this paper, we reject the ``pole-on'' solution, because high-latitude spots viewed from a pole-on orientation would not move into and out of view sufficiently to produce the observed $\sim 3$\% rotational variability. We adopt the ``equator-on'' solution hereafter.
 
 \citet{Sanchis-Ojeda2011} estimated the stellar inclination with observations from \kepler\ Quarters 0-2. Here, we carry out a similar analysis with the complete \kepler\ light curve from Quarters 0-17, which yields a stronger constraint on the stellar inclination. We procede by constructing a probabilistic model for the distribution of the spot latitudes. We model the probability distribution of spots as a function of latitude using a Gaussian mixture model $p(\ell)$, which is the sum of two normal distributions with mean latitudes $m_1$ and $m_2$, standard deviation $\sigma$, and relative amplitudes $a$ and $(1 - a)$,
-\begin{multline}
-p(\ell) = a \, \exp(-\frac{(\ell - m_1)^2}{2\sigma^2}) +\\ (1-a) \, \exp(-\frac{(\ell - m_2)^2}{2\sigma^2}).
-\end{multline}
+\begin{equation}
+p(\ell) = a \, \exp(-\frac{(\ell - m_1)^2}{2\sigma^2}) + (1-a) \, \exp(-\frac{(\ell - m_2)^2}{2\sigma^2}).
+\end{equation}
 The time-dependent mean latitudes $m_1$ and $m_2$ are
 \begin{eqnarray}
 m_1(t) &=& \bar{\ell} + \ell^\prime t + \Delta i_s \\ 

@@ -200,7 +200,7 @@ The \texttt{astroplan.periodic} module contains a framework for defining systems
  '2016-09-24 00:49:00.711']
 \end{lstlisting}
 
-There are also complementary methods in the \texttt{constraints} module for use with the \texttt{periodic} system framework. Users can determine which eclipse events are observable from an observatory with a list of constraints. We include a brief tutorial for using the \texttt{periodic} module with queries from online exoplanet parameter databases in Appendix~\ref{sec:eb}.
+There are also complementary methods in the \texttt{constraints} module for use with the \texttt{periodic} system framework. Users can determine which eclipse events are observable from an observatory with a list of constraints. We include a brief tutorial for using the \texttt{periodic} module with queries from online exoplanet parameter databases in the published appendix.
 
 
 \subsection{Scheduling Observations}
@@ -215,7 +215,7 @@ The \textit{sequential scheduler} begins by selecting the best-scored observing 
 
 The \textit{priority scheduler} takes a prioritized list of observing blocks. The priority for each observing block could be assigned by an observatory TAC for example, or by an individual observer who needs to schedule their observations given their scientific priorities. The scheduler will first allocate the highest priority observing block to the best-scored time slot for that observing block, and then schedule the next priority block at its best time, etc. 
 
-The two schedulers presently implemented are most useful for planning an individual observer's observations; a complete example is available in Appendix~\ref{sec:scheduleapp}. We intend to continue to develop the scheduling module to support queue scheduling for observatories with many observing programs. A wide range of strategies exist for planning observations, however, so the code for the schedulers is adaptable for users to adopt to other strategies either via subclassing or creating new scheduler classes.  The package welcomes contributions of this sort from the community.
+The two schedulers presently implemented are most useful for planning an individual observer's observations; a complete example is available in published Appendix. We intend to continue to develop the scheduling module to support queue scheduling for observatories with many observing programs. A wide range of strategies exist for planning observations, however, so the code for the schedulers is adaptable for users to adopt to other strategies either via subclassing or creating new scheduler classes.  The package welcomes contributions of this sort from the community.
 
 \subsection{Testing \& Development}
 
@@ -330,202 +330,202 @@ Detailed, tested, living documentation for \astroplan is available online via Re
 %\end{thebibliography}
 
 
-\begin{subappendices}
-We outline here some in-depth code examples which demonstrate a few intended use cases for \astroplan. We again encourage the reader to visit the online documentation described in Section~\ref{sec:docs} for many example inputs and outputs.
-
-\section{Observing constraints} \label{sec:constraints_example}
-In Section~\ref{sec:constraints}, we outlined a list of example observing constraints, which we might like to evaluate at various times with \astroplan. We will observe Praesepe from Keck Observatory, and we are setting the following constraints: (i) observe between astronomical twilights; (ii) observe while the Moon is separated from Praesepe by at least $45^\circ$; and (iii) observe while Praesepe is above the lower elevation limit of Keck I, about $33^\circ$. These observing constraints can be specified with the \texttt{AtNightConstraint}, \texttt{MoonSeparationConstraint}, and \texttt{AltitudeConstraint} objects. Other built-in constraints include: Moon illumination, airmass limits, Sun separation limits (e.g.,~for non-optical observations), and local time constraints. The observing constraint classes take the following parameters as input: targets, times and an observer. The constraints return boolean matrices indicating whether or not those targets are observable at each time. 
-
-The following code will compute whether or not Praesepe is observable given the constraints listed above. The array \texttt{observablility} will contain \texttt{True} for times when Praesepe is observable given the specified constraints, and \texttt{False} otherwise. We visualize the observability grid in Figure~\ref{fig:constraints}.
-
-A warning may be printed if \astropy or \astroplan need to update the International Earth Rotation and Reference Systems Service (IERS) tables before computing a target's altitude and azimuth. The altitude and azimuth of a target depends on the orientation of the Earth, which varies on short timescales due to shifts in the Earth's moment of inertia. In order to account for these unpredictable variations in the Earth's position with time, astropy (and therefore astroplan) use constantly updated tables from the IERS which specify the Earth's orientation with observations of quasars. 
-
-\begin{lstlisting}
-from astroplan import (FixedTarget, Observer, AltitudeConstraint,
-                          AtNightConstraint, MoonSeparationConstraint)
-from astroplan.utils import time_grid_from_range
-from astropy.time import Time
-import astropy.units as u
-import numpy as np
-
-# Specify observer at Keck Observatory:
-keck = Observer.at_site("Keck")
-
-# Use Sesame name resolver to get coordinates for Praesepe:
-target = FixedTarget.from_name("Praesepe")
-
-# Define observing constraints:
-constraints = [AtNightConstraint.twilight_astronomical(),
-                 MoonSeparationConstraint(min=45 * u.deg),
-                 AltitudeConstraint(min=33 * u.deg)]
-
-# Define range of times to observe between
-start_time = Time("2017-01-01 04:00:01")
-end_time = Time("2017-01-01 11:00:01")
-time_resolution = 1 * u.hour
-
-# Create grid of times from ``start_time`` to ``end_time``
-# with resolution ``time_resolution``
-time_grid = time_grid_from_range([start_time, end_time],
-                                      time_resolution=time_resolution)
-
-observability_grid = np.zeros((len(constraints), len(time_grid)))
-
-for i, constraint in enumerate(constraints):
-    # Evaluate each constraint
-    observability_grid[i, :] = constraint(keck, target, times=time_grid)
-    
-# The plotting commands are omitted from this paper for brevity, and are available in 
-# the online documentation. The result is plotted in Figure 2.
-\end{lstlisting}
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.7]{astroplan/constraints.pdf}
-\caption{Diagram summarizing the ``observability grid'' of Praesepe given each observing constraint, at each hour within the time range. Dark squares represent times when the observing constraint is not satisfied.}
-\label{fig:constraints}
-\end{figure}
-
-\section{Eclipsing Binary and Transiting Exoplanet Ephemerides} \label{sec:eb}
-
-Suppose you want to observe a newly discovered eclipsing binary, or a well-known transiting exoplanet. You can compute the time of the next primary eclipse or transit event with the \texttt{EclipsingSystem} object. 
-
-\begin{lstlisting}
-from astropy.time import Time
-import astropy.units as u
-from astroplan import EclipsingSystem
-
-# We will compute the next transit/eclipse times relative to this reference time:
-reference_time = Time("2017-07-07 00:00")
-
-# Define system parameters:
-primary_eclipse_time = Time("2017-07-07 12:00")
-orbital_period = 2 * u.day
-
-example_binary = EclipsingSystem(primary_eclipse_time, orbital_period)
-
-print(example_binary.next_primary_eclipse_time(reference_time))
-# The printed result is: ['2017-07-07 12:00:00.000']
-\end{lstlisting}
-
-With the latest version of astroquery \citep{astroquery}, you can query the NASA Exoplanet Science Institute Exoplanet Archive \citep{Akeson2013} or the Exoplanet Orbit Database \citep{Wright2011, Han2014} for exoplanet system parameters:
-\begin{lstlisting}
-# You can use astroquery version >= 0.3.7 to get planet parameters from the 
-# Exoplanet Orbit Database like this:
-from astroquery.exoplanet_orbit_database import ExoplanetOrbitDatabase
-
-planet = ExoplanetOrbitDatabase.query_planet('HD 209458 b')
-
-name = "HD 209458 b"
-primary_eclipse_time = Time(planet['T0'], format='jd')
-orbital_period = planet['PER']
-duration = planet['T14']
-eccentricity = planet['ECC']
-argument_of_periapsis = planet['OM']
-
-hd_209458_b = EclipsingSystem(primary_eclipse_time, orbital_period,
-                                 duration, eccentricity, argument_of_periapsis,
-                                 name)
-
-print(hd_209458_b.next_primary_eclipse_time(reference_time))
-# The printed result is: ['2017-07-10 01:31:18.521']
-\end{lstlisting}
-
-\section{Scheduling Observations} \label{sec:scheduleapp}
-
-In this example, suppose we want to create a schedule for observations at Apache Point Observatory in the first half of the night of 2016 July 7 UTC. We will schedule 16 exposures of Deneb and M13, each in three color filters: B, G and R. We must observe these targets when they meet the following constraints: (1) the airmass of the target is $<3$; (2) the time is between civil twilights; (3) the time is between 02:00-08:00 UTC, which corresponds to the first half of the night at Apache Point.
-
-\astroplan provides control over the many parameters that affect observation scheduling. In the example below, we take into account the slew rate of the telescope, the time it takes to change filters, and a user-input priority for each observing block. 
-
-\begin{lstlisting}
-import astropy.units as u
-from astropy.time import Time
-from astroplan import (Observer, FixedTarget, ObservingBlock, Transitioner,
-                          AirmassConstraint, TimeConstraint, AtNightConstraint,
-                          PriorityScheduler, Schedule)
-from astroplan.plots import plot_schedule_airmass
-import matplotlib.pyplot as plt
-
-# Define the observer, at Apache Point Observatory
-apo = Observer.at_site("APO")
-deneb = FixedTarget.from_name("Deneb")
-m13 = FixedTarget.from_name("M13")
-
-# Define start time and end time of the schedule.
-noon_before = Time("2016-07-06 19:00")
-noon_after = Time("2016-07-07 19:00")
-
-# Specify the read-out time, exposure duration and number of exposures
-read_out = 20 * u.second
-deneb_exp = 60 * u.second
-m13_exp = 100 * u.second
-n_exposures = 16   # Number of exposures
-
-# Define the constraints global (constraints on all targets) and specific
-# (constraints for individual targets) and make a list of the
-# observing blocks that you want to schedule
-global_constraints = [AirmassConstraint(max=3, boolean_constraint=False),
-                         AtNightConstraint.twilight_civil()]
-
-# This will be the list of observing blocks to schedule:
-blocks = []
-
-first_half_night = TimeConstraint(Time("2016-07-07 02:00"),
-                                      Time("2016-07-07 08:00"))
-
-for priority, bandpass in enumerate(['B', 'G', 'R']):
-    # We want each filter to have its own, independent priority (so that target
-    # and reference star are both scheduled)
-    b = ObservingBlock.from_exposures(deneb, priority, deneb_exp, n_exposures,
-                                          read_out, constraints=[first_half_night],
-                                          configuration={'filter': bandpass})
-    blocks.append(b)
-
-    b = ObservingBlock.from_exposures(m13, priority, m13_exp, n_exposures,
-                                          read_out, constraints=[first_half_night],
-                                          configuration={'filter': bandpass})
-    blocks.append(b)
-
-# Define how the telescope transitions between the configurations defined in the
-# observing blocks (target, filter, instrument, etc.).
-filter_change_times = {'filter': {('B', 'G'): 10*u.second,
-                                      ('G', 'R'): 10*u.second,
-                                      'default': 30*u.second}}
-
-# How fast does the telescope move, on average?
-telescope_slew_rate = 0.8 * u.deg/u.second
-transitioner = Transitioner(slew_rate=telescope_slew_rate,
-                               instrument_reconfig_times=filter_change_times)
-
-# Initialize the scheduler
-priority_scheduler = PriorityScheduler(constraints=global_constraints,
-                                           observer=apo, transitioner=transitioner)
-
-# Create a Schedule object, which the Scheduler will insert observing blocks
-# into
-schedule = Schedule(noon_before, noon_after)
-
-# Run the scheduler, and put the observing blocks ``blocks`` into the
-# schedule object ``schedule``
-priority_scheduler(blocks, schedule)
-
-# To get a plot of the airmass vs where the blocks were scheduled
-plt.figure(figsize=(8, 6))
-plot_schedule_airmass(schedule)
-plt.tight_layout()
-plt.legend(loc="upper right")
-plt.savefig("schedule.pdf", bbox_inches="tight")
-plt.show()
-
-# The resulting plot is shown in Figure 3
-\end{lstlisting}
-
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.5]{astroplan/schedule.pdf}
-\caption{Airmass plot showing the scheduled observing blocks. Since we constrained the observations to occur before 8:00 UTC, but Deneb doesn't reach its highest altitude until after 8:00 UTC, the scheduler assigned the Deneb observing blocks as late as possible before the 8:00 UTC, thus minimizing the airmass of Deneb during the observations. Since M13 is observable at its minimum airmass, the scheduler centered the three observing blocks on the times when M13 is at minimum airmass. The black lines between observing blocks represent transitions, which account for instrument reconfiguration dead time --- in this example, filter changes and telescope slews add some dead time.}
-\label{fig:schedule}
-\end{figure}
-
-\end{subappendices}
+%\begin{subappendices}
+%We outline here some in-depth code examples which demonstrate a few intended use cases for \astroplan. We again encourage the reader to visit the online documentation described in Section~\ref{sec:docs} for many example inputs and outputs.
+%
+%\section{Observing constraints} \label{sec:constraints_example}
+%In Section~\ref{sec:constraints}, we outlined a list of example observing constraints, which we might like to evaluate at various times with \astroplan. We will observe Praesepe from Keck Observatory, and we are setting the following constraints: (i) observe between astronomical twilights; (ii) observe while the Moon is separated from Praesepe by at least $45^\circ$; and (iii) observe while Praesepe is above the lower elevation limit of Keck I, about $33^\circ$. These observing constraints can be specified with the \texttt{AtNightConstraint}, \texttt{MoonSeparationConstraint}, and \texttt{AltitudeConstraint} objects. Other built-in constraints include: Moon illumination, airmass limits, Sun separation limits (e.g.,~for non-optical observations), and local time constraints. The observing constraint classes take the following parameters as input: targets, times and an observer. The constraints return boolean matrices indicating whether or not those targets are observable at each time. 
+%
+%The following code will compute whether or not Praesepe is observable given the constraints listed above. The array \texttt{observablility} will contain \texttt{True} for times when Praesepe is observable given the specified constraints, and \texttt{False} otherwise. We visualize the observability grid in Figure~\ref{fig:constraints}.
+%
+%A warning may be printed if \astropy or \astroplan need to update the International Earth Rotation and Reference Systems Service (IERS) tables before computing a target's altitude and azimuth. The altitude and azimuth of a target depends on the orientation of the Earth, which varies on short timescales due to shifts in the Earth's moment of inertia. In order to account for these unpredictable variations in the Earth's position with time, astropy (and therefore astroplan) use constantly updated tables from the IERS which specify the Earth's orientation with observations of quasars. 
+%
+%\begin{lstlisting}
+%from astroplan import (FixedTarget, Observer, AltitudeConstraint,
+%                          AtNightConstraint, MoonSeparationConstraint)
+%from astroplan.utils import time_grid_from_range
+%from astropy.time import Time
+%import astropy.units as u
+%import numpy as np
+%
+%# Specify observer at Keck Observatory:
+%keck = Observer.at_site("Keck")
+%
+%# Use Sesame name resolver to get coordinates for Praesepe:
+%target = FixedTarget.from_name("Praesepe")
+%
+%# Define observing constraints:
+%constraints = [AtNightConstraint.twilight_astronomical(),
+%                 MoonSeparationConstraint(min=45 * u.deg),
+%                 AltitudeConstraint(min=33 * u.deg)]
+%
+%# Define range of times to observe between
+%start_time = Time("2017-01-01 04:00:01")
+%end_time = Time("2017-01-01 11:00:01")
+%time_resolution = 1 * u.hour
+%
+%# Create grid of times from ``start_time`` to ``end_time``
+%# with resolution ``time_resolution``
+%time_grid = time_grid_from_range([start_time, end_time],
+%                                      time_resolution=time_resolution)
+%
+%observability_grid = np.zeros((len(constraints), len(time_grid)))
+%
+%for i, constraint in enumerate(constraints):
+%    # Evaluate each constraint
+%    observability_grid[i, :] = constraint(keck, target, times=time_grid)
+%    
+%# The plotting commands are omitted from this paper for brevity, and are available in 
+%# the online documentation. The result is plotted in Figure 2.
+%\end{lstlisting}
+%
+%\begin{figure}[h]
+%\centering
+%\includegraphics[scale=0.7]{astroplan/constraints.pdf}
+%\caption{Diagram summarizing the ``observability grid'' of Praesepe given each observing constraint, at each hour within the time range. Dark squares represent times when the observing constraint is not satisfied.}
+%\label{fig:constraints}
+%\end{figure}
+%
+%\section{Eclipsing Binary and Transiting Exoplanet Ephemerides} \label{sec:eb}
+%
+%Suppose you want to observe a newly discovered eclipsing binary, or a well-known transiting exoplanet. You can compute the time of the next primary eclipse or transit event with the \texttt{EclipsingSystem} object. 
+%
+%\begin{lstlisting}
+%from astropy.time import Time
+%import astropy.units as u
+%from astroplan import EclipsingSystem
+%
+%# We will compute the next transit/eclipse times relative to this reference time:
+%reference_time = Time("2017-07-07 00:00")
+%
+%# Define system parameters:
+%primary_eclipse_time = Time("2017-07-07 12:00")
+%orbital_period = 2 * u.day
+%
+%example_binary = EclipsingSystem(primary_eclipse_time, orbital_period)
+%
+%print(example_binary.next_primary_eclipse_time(reference_time))
+%# The printed result is: ['2017-07-07 12:00:00.000']
+%\end{lstlisting}
+%
+%With the latest version of astroquery \citep{astroquery}, you can query the NASA Exoplanet Science Institute Exoplanet Archive \citep{Akeson2013} or the Exoplanet Orbit Database \citep{Wright2011, Han2014} for exoplanet system parameters:
+%\begin{lstlisting}
+%# You can use astroquery version >= 0.3.7 to get planet parameters from the 
+%# Exoplanet Orbit Database like this:
+%from astroquery.exoplanet_orbit_database import ExoplanetOrbitDatabase
+%
+%planet = ExoplanetOrbitDatabase.query_planet('HD 209458 b')
+%
+%name = "HD 209458 b"
+%primary_eclipse_time = Time(planet['T0'], format='jd')
+%orbital_period = planet['PER']
+%duration = planet['T14']
+%eccentricity = planet['ECC']
+%argument_of_periapsis = planet['OM']
+%
+%hd_209458_b = EclipsingSystem(primary_eclipse_time, orbital_period,
+%                                 duration, eccentricity, argument_of_periapsis,
+%                                 name)
+%
+%print(hd_209458_b.next_primary_eclipse_time(reference_time))
+%# The printed result is: ['2017-07-10 01:31:18.521']
+%\end{lstlisting}
+%
+%\section{Scheduling Observations} \label{sec:scheduleapp}
+%
+%In this example, suppose we want to create a schedule for observations at Apache Point Observatory in the first half of the night of 2016 July 7 UTC. We will schedule 16 exposures of Deneb and M13, each in three color filters: B, G and R. We must observe these targets when they meet the following constraints: (1) the airmass of the target is $<3$; (2) the time is between civil twilights; (3) the time is between 02:00-08:00 UTC, which corresponds to the first half of the night at Apache Point.
+%
+%\astroplan provides control over the many parameters that affect observation scheduling. In the example below, we take into account the slew rate of the telescope, the time it takes to change filters, and a user-input priority for each observing block. 
+%
+%\begin{lstlisting}
+%import astropy.units as u
+%from astropy.time import Time
+%from astroplan import (Observer, FixedTarget, ObservingBlock, Transitioner,
+%                          AirmassConstraint, TimeConstraint, AtNightConstraint,
+%                          PriorityScheduler, Schedule)
+%from astroplan.plots import plot_schedule_airmass
+%import matplotlib.pyplot as plt
+%
+%# Define the observer, at Apache Point Observatory
+%apo = Observer.at_site("APO")
+%deneb = FixedTarget.from_name("Deneb")
+%m13 = FixedTarget.from_name("M13")
+%
+%# Define start time and end time of the schedule.
+%noon_before = Time("2016-07-06 19:00")
+%noon_after = Time("2016-07-07 19:00")
+%
+%# Specify the read-out time, exposure duration and number of exposures
+%read_out = 20 * u.second
+%deneb_exp = 60 * u.second
+%m13_exp = 100 * u.second
+%n_exposures = 16   # Number of exposures
+%
+%# Define the constraints global (constraints on all targets) and specific
+%# (constraints for individual targets) and make a list of the
+%# observing blocks that you want to schedule
+%global_constraints = [AirmassConstraint(max=3, boolean_constraint=False),
+%                         AtNightConstraint.twilight_civil()]
+%
+%# This will be the list of observing blocks to schedule:
+%blocks = []
+%
+%first_half_night = TimeConstraint(Time("2016-07-07 02:00"),
+%                                      Time("2016-07-07 08:00"))
+%
+%for priority, bandpass in enumerate(['B', 'G', 'R']):
+%    # We want each filter to have its own, independent priority (so that target
+%    # and reference star are both scheduled)
+%    b = ObservingBlock.from_exposures(deneb, priority, deneb_exp, n_exposures,
+%                                          read_out, constraints=[first_half_night],
+%                                          configuration={'filter': bandpass})
+%    blocks.append(b)
+%
+%    b = ObservingBlock.from_exposures(m13, priority, m13_exp, n_exposures,
+%                                          read_out, constraints=[first_half_night],
+%                                          configuration={'filter': bandpass})
+%    blocks.append(b)
+%
+%# Define how the telescope transitions between the configurations defined in the
+%# observing blocks (target, filter, instrument, etc.).
+%filter_change_times = {'filter': {('B', 'G'): 10*u.second,
+%                                      ('G', 'R'): 10*u.second,
+%                                      'default': 30*u.second}}
+%
+%# How fast does the telescope move, on average?
+%telescope_slew_rate = 0.8 * u.deg/u.second
+%transitioner = Transitioner(slew_rate=telescope_slew_rate,
+%                               instrument_reconfig_times=filter_change_times)
+%
+%# Initialize the scheduler
+%priority_scheduler = PriorityScheduler(constraints=global_constraints,
+%                                           observer=apo, transitioner=transitioner)
+%
+%# Create a Schedule object, which the Scheduler will insert observing blocks
+%# into
+%schedule = Schedule(noon_before, noon_after)
+%
+%# Run the scheduler, and put the observing blocks ``blocks`` into the
+%# schedule object ``schedule``
+%priority_scheduler(blocks, schedule)
+%
+%# To get a plot of the airmass vs where the blocks were scheduled
+%plt.figure(figsize=(8, 6))
+%plot_schedule_airmass(schedule)
+%plt.tight_layout()
+%plt.legend(loc="upper right")
+%plt.savefig("schedule.pdf", bbox_inches="tight")
+%plt.show()
+%
+%# The resulting plot is shown in Figure 3
+%\end{lstlisting}
+%
+%\begin{figure}[h]
+%\centering
+%\includegraphics[scale=0.5]{astroplan/schedule.pdf}
+%\caption{Airmass plot showing the scheduled observing blocks. Since we constrained the observations to occur before 8:00 UTC, but Deneb doesn't reach its highest altitude until after 8:00 UTC, the scheduler assigned the Deneb observing blocks as late as possible before the 8:00 UTC, thus minimizing the airmass of Deneb during the observations. Since M13 is observable at its minimum airmass, the scheduler centered the three observing blocks on the times when M13 is at minimum airmass. The black lines between observing blocks represent transitions, which account for instrument reconfiguration dead time --- in this example, filter changes and telescope slews add some dead time.}
+%\label{fig:schedule}
+%\end{figure}
+%
+%\end{subappendices}
 %\end{document}

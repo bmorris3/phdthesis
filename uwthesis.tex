@@ -35,10 +35,11 @@
 \usepackage{aas_macros}
 \usepackage{appendix}
 \usepackage{etoolbox}
-
+\usepackage{longtable}
 \usepackage{listings}
 \usepackage{color}
 \usepackage{inconsolata}
+\usepackage{sidecap}
 
 \usepackage[footnote,printonlyused]{acronym}
 \usepackage{scrextend}
@@ -156,13 +157,12 @@ This is where an abstract will go.
 
 \textpages
 
+
 \chapter{Introduction}
 
 \input{intro/introduction.tex}
 
-\chapter{astroplan: an Open Source Observation Planning Package in Python}
-
-\input{astroplan/arxiv.tex}
+\part{Stellar Activity}
 
 \chapter{The Active Latitudes of HAT-P-11: Evidence for a Solar-like Dynamo}
 
@@ -178,11 +178,13 @@ This is where an abstract will go.
 
 \input{gaia/arxiv.tex}
 
+\part{Exoplanet Characterization}
+
 \chapter{Possible Bright Starspots of TRAPPIST-1}
 
 \input{trappist1_bright/arxiv.tex}
 
-\chapter{Ground-based Transit Photometry at Apache Point Observatory}
+\chapter{Ground-based Transit Photometry at Apache Point Observatory}
 
 \section{Transit times of TRAPPIST-1 b and c with ARCTIC}
 \input{trappist1_rn/arxiv.tex}
@@ -197,7 +199,21 @@ This is where an abstract will go.
 
 \chapter{Revisiting the Spot Occultation of HAT-P-7}
 
+\part{The effects of stellar activity on planet characterization}
+
+\chapter{The Limits of Transit Characterization with JWST/NIRSpec due to Stellar Variability: The Cases of TRAPPIST-1, Kepler-296 and Kepler-62.}
+
+\part{Contributions to Open Source Software}
+
+\chapter{astroplan: an Open Source Observation Planning Package in Python}
+
+\input{astroplan/arxiv.tex}
+
+\chapter{shampoo: an Open Source Digital Holographic Microscopy Toolkit in Python}
+
+
 \chapter{Discussion and Conclusion}
+
 
 \printendnotes
 
