@@ -113,14 +113,14 @@
 
 \setcounter{page}{-1}
 \abstract{%
-This is where an abstract will go.
+I am a member of the first generation for whom there has never been a time in our lives when our age in years has exceeded the number of known planets. Exoplanets have been discovered principally via the transit method, which reveals planetary radii and orbital periods. In transiting multi-planet systems, we can measure the masses of exoplanets without expensive spectroscopy by using transit timing variations. Transits can also reveal the composition of exoplanet atmospheres via transmission spectroscopy. However, there is a confounding stellar signal which complicates of all of the aforementioned measurements. One planet-hosting star has been studied for thousands of years: the Sun. Even before the invention of the telescope it was known that the Sun bares dark spots on its surface. Regions of stellar magnetic activity inject confounding time- and wavelength-dependent signals into the spectrophotometry of exoplanet host stars which enables transit timing and transmission spectroscopy measurements. The goal of this thesis is to explore stellar magnetic activity and its impact on our ability to measure exoplanet properties. I used the transiting planet HAT-P-11 b to measure the sizes and latitude distribution of starspots on its active K4 dwarf host star, and find that its magnetic activity mirrors the Sun's. I measured the chromospheric activity of HAT-P-11 and compared it to stars of similar temperature and rotation period and find that it's the most active of its peers, perhaps suggestive of star-planet interaction. I directly measured starspot coverage on a sample of bright stars via TiO molecular band modeling. With ground-based photometry, I measured the transit times of TRAPPIST-1 b and c, and several Kepler host stars. I devised a technique for measuring robust exoplanet radii even in the presence of significant starspot distributions by reparameterizing the transit light curve of Mandel \& Agol (2002). I identified the possibility of detecting stellar activity cycles of nearby stars using precision astrometry. Finally, I devised a simulator for James Webb Space Telescope observations of transiting exoplanets. 
 }
  
 %
 % ----- contents & etc.
 %
 \tableofcontents
-\listoffigures
+%\listoffigures
 %\listoftables  % I have no tables
  
 
@@ -162,7 +162,7 @@ This is where an abstract will go.
 
 \input{intro/introduction.tex}
 
-%\part{Stellar Activity}
+\part{Stellar Activity}
 
 \chapter{The Active Latitudes of HAT-P-11: Evidence for a Solar-like Dynamo}
 
@@ -178,7 +178,7 @@ This is where an abstract will go.
 
 \input{gaia/arxiv.tex}
 
-%\part{Exoplanet Characterization}
+\part{Exoplanet Characterization}
 
 \chapter{Possible Bright Starspots of TRAPPIST-1}
 
@@ -205,6 +205,10 @@ This is where an abstract will go.
 
 \input{robin/main.tex}
 
+\chapter{Robust Transiting Exoplanet Radii: Revisiting TRAPPIST-1}
+
+\input{trappist1_robin/main.tex}
+
 \chapter{The Limits of Transit Characterization with JWST/NIRSpec due to Stellar Variability: The Cases of TRAPPIST-1, Kepler-296 and Kepler-62.}
 
 \part{Contributions to Open Source Software}
@@ -225,7 +229,7 @@ This is where an abstract will go.
 %
 \nocite{*}   % include everything in the uwthesis.bib file
 \bibliographystyle{apj}
-\bibliography{./intro/bibliography,./stsp_hat_p_11/bibliography,./sindex/sindex_bibliography,./gaia/gaia_bib,./trappist1_bright/t1bright_bib,./trappist1_rn/t1rn_bib,./hat11rn/bibliography,./astroplan/bibliography,./koinet/bibliography,./robin/bibliography}
+\bibliography{./intro/bibliography,./stsp_hat_p_11/bibliography,./sindex/sindex_bibliography,./gaia/gaia_bib,./trappist1_bright/t1bright_bib,./trappist1_rn/t1rn_bib,./hat11rn/bibliography,./astroplan/bibliography,./koinet/bibliography,./robin/bibliography,./trappist1_robin/bibliography}
 
 %
 % ==========   Appendices
