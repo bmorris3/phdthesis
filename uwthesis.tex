@@ -217,15 +217,21 @@ Now the simultaneously present toroidal and poloidal field components interact w
 
 \chapter{The Active Latitudes of HAT-P-11: Evidence for a Solar-like Dynamo}
 
+This chapter was first published in the Astrophysical Journal \citep{Morris2017a}.
+
 \input{stsp_hat_p_11/accepted.tex}
 
 \chapter{The Chromospheric Activity of HAT-P-11: an Unusually Active, Planet-hosting K Dwarf}
+
+This chapter was first published in the Astrophysical Journal \citep{Morris2017b}.
 
 \input{sindex/arxiv.tex}
 
 \chapter{Detections of Stellar Spectral Heterogeneity with High Resolution Spectroscopy}
 
 \chapter{Spotting Stellar Activity Cycles with Gaia}
+
+This chapter was first published in the Astronomical Journal \citep{Morris2018b}.
 
 \input{gaia/arxiv.tex}
 
@@ -234,6 +240,8 @@ Now the simultaneously present toroidal and poloidal field components interact w
 \input{nephelion/main.tex}
 
 \chapter{Possible Bright Starspots of TRAPPIST-1}
+
+This chapter was first published in the Astronomical Journal \citep{Morris2018c}.
 
 \input{trappist1_bright/arxiv.tex}
 
@@ -245,17 +253,23 @@ To date, the most productive exoplanet discovery and characterization method has
 
 In this Part, we will discuss the observations of transits of several planets, and what the transits tell us about: (1) the masses of exoplanets in Sections~\ref{sec:traptimes} and \ref{sec:koinet}; and (2) the spots of the host star in Section~\ref{sec:hatspot}.
 
-\chapter{Ground-based Transit Photometry at Apache Point Observatory}
+\chapter{Ground-based Transit Photometry at Apache Point Observatory} \label{chapter:apo}
 
 \section{Transit times of TRAPPIST-1 b and c with ARCTIC} \label{sec:traptimes}
+
+This section was first published in Research Notes of the American Astronomical Society \citep{Morris2018a}.
 
 \input{trappist1_rn/arxiv.tex}
 
 \section{Holographic diffuser-assisted spot occultation photometry of HAT-P-11} \label{sec:hatspot}
 
+This section was first published in Research Notes of the American Astronomical Society \citep{Morris2018d}.
+
 \input{hat11rn/main.tex}
 
 \section{KOINet Transit Timing Network} \label{sec:koinet}
+
+The results of this section were first published in Astronomy \& Astrophysics \citep{vonEssen2018}.
 
 \input{koinet/main.tex}
 
@@ -265,9 +279,13 @@ In Part~\ref{part:activity} we discussed observations of stellar magnetic activi
 
 \chapter{Robust Transiting Exoplanet Radii in the Presence of Starspots from Ingress and Egress Durations} \label{chapter:robin}
 
+This chapter was first published in the Astronomical Journal \citep{Morris2018e}.
+
 \input{robin/main.tex}
 
 \chapter{Robust Transiting Exoplanet Radii: Revisiting TRAPPIST-1} \label{chapter:robin_trap}
+
+This chapter was first published in the Astrophysical Journal Letters \citep{Morris2018f}.
 
 \input{trappist1_robin/main.tex}
 
@@ -279,17 +297,39 @@ In the previous Parts, thousands of lines of code were written to facilitate eac
 
 \chapter{astroplan: an Open Source Observation Planning Package in Python} \label{chap:astroplan}
 
+This chapter was first published in the Astronomical Journal \citep{astroplan}.
+
 \input{astroplan/arxiv.tex}
 
 \chapter{aesop: The ARC Echelle Spectrograph Observation Pipeline} \label{chap:aesop}
+
+This chapter was first published in the Journal of Open Source Software \citep{aesop}.
 
 The ARC Echelle Spectroscopic Observation Pipeline, or {\tt aesop}, is a high resolution spectroscopy software toolkit tailored for observations from the Astrophysics Research Consortium (ARC) Echelle Spectrograph mounted on the ARC 3.5 m Telescope at Apache Point Observatory. {\tt aesop} picks up where the traditional IRAF reduction scripts leave off, offering an open development, object-oriented Pythonic analysis framework for echelle spectra.
 
 Basic functionality of {\tt aesop} includes: (1) blaze function normalization by polynomial fits to observations of early-type stars, (2) an additional/alternative robust least-squares normalization method, (3) radial velocity measurements (or offset removals) via cross-correlation with model spectra, including barycentric radial velocity calculations, (4) concatenation of multiple echelle orders into a simple 1D spectrum, and (5) approximate flux calibration.
 
-Some handy additional utilities include methods for download PHOENIX model spectra \citep{Husser2013}, and methods for measuring the Mount Wilson Observatory-calibrated CaII H & K "S" index \citep{Morris2017b}. aesop was built from the Astropy package-template, and thus includes self-building documentation and continuous integration \citep{astropy}.
+Some handy additional utilities include methods for download PHOENIX model spectra \citep{Husser2013}, and methods for measuring the Mount Wilson Observatory-calibrated CaII H & K "S" index \citep{Morris2017b}. aesop was built from the Astropy package-template, and thus includes self-building documentation and continuous integration \citep{Astropy2018}.
 
 \chapter{Discussion and Conclusion}
+
+\section{Outlook for exoplanet detection with TESS and ground-based follow-up}
+.
+The TESS mission will survey 200,000 of the brightest stars in the sky for evidence of transiting exoplanets \citep{Ricker2014}. Most planet candidates will only be observed by TESS for 27 consecutive days, so only a handful of transits will be recorded in the primary mission. It will be the task of ground-based follow-up observers to monitor planet candidates produced by TESS to confirm the planetary nature of these candidates by planetary multiplicity, transit timing variations, or radial velocity campaigns. 
+
+In Chapter~\ref{chapter:apo} Section~\ref{sec:hatspot}, we showed that a holographic diffuser enables high precision photometry from the ground \citep[see also][]{Stefansson2017,Stefansson2018} -- diffuser photometry may be a key asset for follow-up of TESS targets. The diffuser transforms the point-spread function of a star from a nearly Gaussian distribution with a tight radial spread of only a few pixels to a broad top-hat shaped distribution spanning thousands of pixels. For bright stars, spreading the light out over many pixels is advantageous for several reasons: (1) it enables longer exposures, which can become long enough to average over atmospheric scintillation noise; (2) it makes the photometry less sensitive to fine pointing errors and intra-pixel sensitivity variations, which are significant when most of the stellar flux is landing on only a handful of pixels; and (3) the photometry is also less sensitive to inter-pixel sensitivity variations (or flat-field precision), since the flux is spread roughly evenly over many pixels. This last point is one of the key advantages in favor of diffuser photometry over defocused photometry, where the flux is often concentrated unevenly onto a few pixels. 
+
+\subsection{Stellar activity of TESS host stars}
+
+Diffuser photometry is not only useful for measuring transits and and transit timing variations, but the uniquely high precision diffuser photometry is well-suited to measuring spot occultations from the ground \citep{Morris2018d}. Should more stars be discovered like HAT-P-11 which show frequent spot occultations, ground-based diffuser photometry may allow us to measure properties stellar magnetically active regions over very long baselines, for example, throughout stellar activity cycles. Also exciting is the possibility of expanding upon the monochromatic photometry of TESS by observing spot occultations from the ground in a different bandpass. For example, we can collect ground-based photometry of HAT-P-11 in the SDSS $u$ band while TESS observes in its redder bandpass, allowing us to use the simultaneous observations to roughly estimate the color, and therefore the temperature, of starspots on HAT-P-11 (or other stars). 
+
+\section{Outlook for exoplanet characterization with JWST}
+
+
+
+\section{Future work}
+
+
 
 
 \printendnotes
