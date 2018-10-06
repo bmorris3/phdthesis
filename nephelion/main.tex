@@ -84,10 +84,23 @@ We describe our spectroscopy of all targets in Section~\ref{sec:spectroscopy}. W
 
 \section{APO/ARCES Spectroscopy} \label{sec:spectroscopy}
 
-\begin{deluxetable*}{lccc}
-\tablecaption{Stellar parameters\label{tab:stellarprops}}
-\tablehead{ & \colhead{KIC 9652680} & \colhead{EPIC 211928486} & \colhead{EPIC 211966629}}
-\startdata
+%\begin{deluxetable*}{lccc}
+%\tablecaption{Stellar parameters\label{tab:stellarprops}}
+%\tablehead{ & \colhead{KIC 9652680} & \colhead{EPIC 211928486} & \colhead{EPIC 211966629}}
+%\startdata
+%$T_\mathrm{eff}$ [K] & $5900 \pm 100$ & $4408\pm 100$ & $4484\pm 100$ \\
+%$\log g$ & 4.47 & 4.66 & 4.66 \\
+%$[$Fe/H$]$ & $+0.21$ & $+0.12$ & $+0.12$ \\
+%$v \sin  i$ [km s$^{-1}$] & 39 & $2\pm2$ & $3\pm2$ \\
+%$P_\mathrm{rot}$ [d] & $1.41 \pm 0.01$ & $11.8 \pm 0.1$ & $11.6 \pm 0.2$ \\
+%$\log R^\prime_\mathrm{HK}$ & $-3.92 \pm 0.03$ & $-4.16 \pm 0.03$ & $-4.11 \pm 0.02$  \\
+%$f_{S, \rm min}$ & 0.26 & 0.041--0.046 &  0.061--0.083
+%\enddata
+%\end{deluxetable*}
+
+\begin{table*}
+\begin{tabular}{l|ccc}
+ & KIC 9652680 & EPIC 211928486 & EPIC 211966629\\ \hline
 $T_\mathrm{eff}$ [K] & $5900 \pm 100$ & $4408\pm 100$ & $4484\pm 100$ \\
 $\log g$ & 4.47 & 4.66 & 4.66 \\
 $[$Fe/H$]$ & $+0.21$ & $+0.12$ & $+0.12$ \\
@@ -95,8 +108,9 @@ $v \sin  i$ [km s$^{-1}$] & 39 & $2\pm2$ & $3\pm2$ \\
 $P_\mathrm{rot}$ [d] & $1.41 \pm 0.01$ & $11.8 \pm 0.1$ & $11.6 \pm 0.2$ \\
 $\log R^\prime_\mathrm{HK}$ & $-3.92 \pm 0.03$ & $-4.16 \pm 0.03$ & $-4.11 \pm 0.02$  \\
 $f_{S, \rm min}$ & 0.26 & 0.041--0.046 &  0.061--0.083
-\enddata
-\end{deluxetable*}
+\end{tabular}
+\caption{Stellar parameters\label{tab:stellarprops}}
+\end{table*}
 
 The ARC Echelle Spectrograph (ARCES) on the ARC 3.5 m Telescope at Apache Point Observatory is an $R\approx31,000$ cross-dispersed spectrograph.  This analysis closely follows the procedure of \citet{Morris2017b} and makes use of its software \citep{aesop}. After stacking all exposures on a given night, we reduce the raw ARCES spectra with \texttt{IRAF} methods to subtract biases, remove cosmic rays, normalize by the flat field, and do the wavelength calibration with exposures of a thorium-argon lamp.\footnote{An ARCES data reduction manual by J.~Thorburn is available at \url{http://astronomy.nmsu.edu:8000/apo-wiki/attachment/wiki/ARCES/Thorburn_ARCES_manual.pdf}} We fit the spectrum of an early-type star with a high-order polynomial to measure the blaze function, and we divide the spectra of each star by the polynomial fit to normalize each spectral order.
 
@@ -242,7 +256,7 @@ The final values are listed in Table~\ref{tab:stellarprops}.
 
 \begin{figure}
     \centering
-    \includegraphics[scale=0.55]{nephelion/KIC-GCPS-v2.eps}
+    \includegraphics[scale=0.55]{nephelion/KIC-GCPS-v2.pdf}
     \caption{\textit{Gaia} DR2 CMD of KIC 9652680 (blue star) and chromospherically active (i.e., young, with \logrprime $< -4.7$ dex) stars observed with Keck/HIRES by the California Planet Survey and characterized with SME 
     by \citet{Brewer2016}. 
     Stars are color-coded according to their 
