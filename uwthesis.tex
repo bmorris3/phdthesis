@@ -150,7 +150,7 @@ At the University of Washington, Professors Eric Agol and Suzanne L. Hawley stew
 \dedication{\begin{center}
 \vspace{1 cm}To Rebecca, my best friend, who came with me on this adventure; 
 
-\vspace{1cm} to my parents, who sent me out on it, 
+\vspace{1cm} to my parents, who sent me out on it;
 
 \vspace{1cm} and to my friends, who were patient while I was gone.
 \end{center}}
@@ -164,12 +164,11 @@ At the University of Washington, Professors Eric Agol and Suzanne L. Hawley stew
 
 \textpages
 
+\part{Stellar Magnetic Activity} \label{part:activity}
 
 \chapter{Introduction}
 
 \input{intro/introduction.tex}
-
-\part{Stellar Magnetic Activity} \label{part:activity}
 
 \section{Brief Introduction to the Magnetohydrodynamics of Starspots}
 
@@ -224,11 +223,17 @@ Now the simultaneously present toroidal and poloidal field components interact w
 
 \chapter{The Active Latitudes of HAT-P-11: Evidence for a Solar-like Dynamo}
 
+In the previous sections we introduced the solar dynamo and activity cycle, and how magnetic activity is expressed on the solar surface. In this chapter, we will use a transiting exoplanet to study the starspots of a star 7 million times farther away from the Earth than the Sun, the K4 dwarf star HAT-P-11. 
+
 This chapter was first published in the Astrophysical Journal \citep{Morris2017a}.
 
 \input{stsp_hat_p_11/accepted.tex}
 
 \chapter{The Chromospheric Activity of HAT-P-11: an Unusually Active, Planet-hosting K Dwarf}
+
+In the previous chapter, we opened a window into the stellar magnetic activity of the K4 dwarf HAT-P-11 using its transiting exoplanet. Yet there are several questions that were left unanswered in the previous chapter. From the four years of \kepler photometry alone, it was not possible to build an analog to the solar butterfly diagram, showing the evolution of spot latitudes as a function of time; so one question that remains is -- how long is the full duration of the stellar magnetic activity cycle of HAT-P-11? 
+
+Another unanswered question in the previous chapter is whether or not HAT-P-11 is ``normal''; in other words, for  planet-hosting stars of similar rotation periods and spectral types, is HAT-P-11 unusual in any way? We showed that the starspots of HAT-P-11 were similar sizes and distributed with latitude in a similar fashion to sunspots, and found that the typical spot coverage on HAT-P-11 was 100x greater than the Sun's. We now ask the question: is that activity level common among similar stars?
 
 This chapter was first published in the Astrophysical Journal \citep{Morris2017b}.
 
@@ -253,8 +258,6 @@ This chapter was first published in the Astronomical Journal \citep{Morris2018c}
 \input{trappist1_bright/arxiv.tex}
 
 \part{Exoplanet Characterization} \label{part:planets}
-
-\section{Transiting exoplanets and differential photometry}
 
 To date, the most productive exoplanet discovery and characterization method has been the transit technique. For systems where the planet appears to eclipse its host star, a temporary dip in brightness of the host star is detectable with precision photometry (cite Charbonneau). The dip in brightness is periodic and occurs once per orbit, allowing us to measure the planet's orbital period and semi-major axis via Kepler's law. The amplitude of the dip in brightness is proportional to the cross-sectional area of the planet to the star, $\Delta F/F = (R_p/R_\star)^2$, allowing us to measure the planet radius relative to the stellar radius.
 
@@ -298,26 +301,6 @@ This chapter was first published in the Astrophysical Journal Letters \citep{Mor
 
 \chapter{The Limits of Transit Characterization with JWST/NIRSpec due to Stellar Variability: The Cases of TRAPPIST-1, Kepler-296 and Kepler-62.} \label{chapter:jwst_nirspc}
 
-\part{Contributions to Open Source Software}
-
-In the previous Parts, thousands of lines of code were written to facilitate each scientific effort, all of which are available on GitHub\footnote{\url{http://github.com/bmorris3}}. In this Part, we highlight two open source, open development coding efforts which may be of use to the broader community. In Chapter~\ref{chap:astroplan} we introduce {\tt astroplan}, an astropy-affiliated package for observation planning and scheduling in Python. In Chapter~\ref{chap:aesop} we introduce {\tt aesop}, a Python package for analysis of echelle spectra collected with the ARC Echelle Spectrograph (ARCES) at Apache Point Observatory (APO). 
-
-\chapter{astroplan: an Open Source Observation Planning Package in Python} \label{chap:astroplan}
-
-This chapter was first published in the Astronomical Journal \citep{astroplan}.
-
-\input{astroplan/arxiv.tex}
-
-\chapter{aesop: The ARC Echelle Spectrograph Observation Pipeline} \label{chap:aesop}
-
-This chapter was first published in the Journal of Open Source Software \citep{aesop}.
-
-The ARC Echelle Spectroscopic Observation Pipeline, or {\tt aesop}, is a high resolution spectroscopy software toolkit tailored for observations from the Astrophysics Research Consortium (ARC) Echelle Spectrograph mounted on the ARC 3.5 m Telescope at Apache Point Observatory. {\tt aesop} picks up where the traditional IRAF reduction scripts leave off, offering an open development, object-oriented Pythonic analysis framework for echelle spectra.
-
-Basic functionality of {\tt aesop} includes: (1) blaze function normalization by polynomial fits to observations of early-type stars, (2) an additional/alternative robust least-squares normalization method, (3) radial velocity measurements (or offset removals) via cross-correlation with model spectra, including barycentric radial velocity calculations, (4) concatenation of multiple echelle orders into a simple 1D spectrum, and (5) approximate flux calibration.
-
-Some handy additional utilities include methods for download PHOENIX model spectra \citep{Husser2013}, and methods for measuring the Mount Wilson Observatory-calibrated CaII H & K "S" index \citep{Morris2017b}. aesop was built from the Astropy package-template, and thus includes self-building documentation and continuous integration \citep{Astropy2018}.
-
 \chapter{Discussion and Future Work}
 
 \section{Outlook for exoplanet detection with TESS and ground-based follow-up}
@@ -349,6 +332,25 @@ Diffuser photometry is not only useful for measuring transits and and transit ti
 %
 \appendix
 \raggedbottom\sloppy
+
+In the previous Parts, thousands of lines of code were written to facilitate each scientific effort, all of which are available on GitHub\footnote{\url{http://github.com/bmorris3}}. In this Part, we highlight two open source, open development coding efforts which may be of use to the broader community. In Chapter~\ref{chap:astroplan} we introduce {\tt astroplan}, an astropy-affiliated package for observation planning and scheduling in Python. In Chapter~\ref{chap:aesop} we introduce {\tt aesop}, a Python package for analysis of echelle spectra collected with the ARC Echelle Spectrograph (ARCES) at Apache Point Observatory (APO). 
+
+\chapter{astroplan: an Open Source Observation Planning Package in Python} \label{chap:astroplan}
+
+This chapter was first published in the Astronomical Journal \citep{astroplan}.
+
+\input{astroplan/arxiv.tex}
+
+\chapter{aesop: The ARC Echelle Spectrograph Observation Pipeline} \label{chap:aesop}
+
+This chapter was first published in the Journal of Open Source Software \citep{aesop}.
+
+The ARC Echelle Spectroscopic Observation Pipeline, or {\tt aesop}, is a high resolution spectroscopy software toolkit tailored for observations from the Astrophysics Research Consortium (ARC) Echelle Spectrograph mounted on the ARC 3.5 m Telescope at Apache Point Observatory. {\tt aesop} picks up where the traditional IRAF reduction scripts leave off, offering an open development, object-oriented Pythonic analysis framework for echelle spectra.
+
+Basic functionality of {\tt aesop} includes: (1) blaze function normalization by polynomial fits to observations of early-type stars, (2) an additional/alternative robust least-squares normalization method, (3) radial velocity measurements (or offset removals) via cross-correlation with model spectra, including barycentric radial velocity calculations, (4) concatenation of multiple echelle orders into a simple 1D spectrum, and (5) approximate flux calibration.
+
+Some handy additional utilities include methods for download PHOENIX model spectra \citep{Husser2013}, and methods for measuring the Mount Wilson Observatory-calibrated CaII H & K "S" index \citep{Morris2017b}. aesop was built from the Astropy package-template, and thus includes self-building documentation and continuous integration \citep{Astropy2018}.
+ 
  
 % ========== Appendix A
 
