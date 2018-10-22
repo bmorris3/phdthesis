@@ -49,6 +49,8 @@
 \newcommand{\astroplan}{\texttt{astroplan}\xspace}
 \newcommand{\astropy}{\texttt{astropy}\xspace}
 \newcommand{\pyephem}{\texttt{pyephem}\xspace}
+\newcommand{\stsp}{\texttt{STSP}\xspace}
+\newcommand{\gaia}{\textit{Gaia}\xspace}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -71,6 +73,16 @@
   breakatwhitespace=true,
   tabsize=3,
 }
+
+\newcommand\ion[2]{#1$\;${%
+\ifx\@currsize\normalsize\small \else
+\ifx\@currsize\small\footnotesize \else
+\ifx\@currsize\footnotesize\scriptsize \else
+\ifx\@currsize\scriptsize\tiny \else
+\ifx\@currsize\large\normalsize \else
+\ifx\@currsize\Large\large
+\fi\fi\fi\fi\fi\fi
+\rmfamily\@Roman{#2}}\relax}% 
 
 %\def\bibpreamble{\protect\addcontentsline{toc}{chapter}{Bibliography}}
 
@@ -166,7 +178,7 @@ At the University of Washington, Professors Eric Agol and Suzanne L. Hawley stew
 
 \part{Stellar Magnetic Activity} \label{part:activity}
 
-\chapter{Introduction}
+\chapter{Introduction} 
 
 \input{intro/introduction.tex}
 
@@ -211,7 +223,7 @@ In this classical picture, a portion of the rising magnetic flux tube now rises 
 
 In summary, dark starspots are the magnetic footprints of strong magnetic fields, which originate at the base of the convective zone and rise through the photosphere due to magnetic buoyancy in differentially rotating stars. Spots often occur in pairs of opposite polarity known as bipolar magnetic regions which are slightly tilted with respect to lines of latitude.
 
-\section{Brief Introduction to the Solar Dynamo}
+\section{Brief Introduction to the Solar Dynamo} \label{sec:solardynamo}
 
 In the previous section, we described the process by which a plasma tube with a magnetic field may rise through the surface and produce starspots observed in the photosphere. There is a problem lurking in our description of stellar magnetic fields -- stellar plasma is not in fact dissipationless, and in time, one might expect the bulk flows that give rise to amplified magnetic fields to decay due to resistance until fields are no longer produced. Or another challenge is the subject of how to construct a bulk flow of the plasma which remains magnetized, as it must not be axisymmetric in order to be sustained over millennia (known as Cowling's Theorem \citealt{Cowling1933}). In this section we'll briefly outline the mechanism known as the $\alpha  \Omega$ dynamo, which reproduces the observed solar magnetic activity cycle \citep{Hathaway2010, Charbonneau2014}. 
 
@@ -221,7 +233,7 @@ Now we have the magnetic field lines wrapped around the star and concentrated (a
 
 Now the simultaneously present toroidal and poloidal field components interact with each other, causing bands of magnetic flux tubes to migrate from the mid-latitudes towards the equator, creating the observed dynamo wave of starspots that emerge first at mid-latitudes (near 30$^\circ$) and later near the equator throughout the solar activity cycle \citep{Parker1955a, Parker1955b}. It has been observed that meridional flow exists on the solar surface which flows from the equator to the poles at the surface, and via the continuity it is thought that meridional flow must also exist at the base of the convective zone from the poles to the equator. The inferred flow at the base of the convection zone is slow, about 1 m/s, which is roughly the speed needed for bulk flow of plasma to migrate from 30$^\circ$ latitude to the equator in 11 years -- causing some to speculate whether flux transport via the meridional flow is responsible for the 11 year periodicity of the solar activity cycle \citep{Dikpati2006,Hathaway2010}. 
 
-\chapter{The Active Latitudes of HAT-P-11: Evidence for a Solar-like Dynamo}
+\chapter{The Active Latitudes of HAT-P-11: Evidence for a Solar-like Dynamo} \label{chap:h11}
 
 In the previous sections we introduced the solar dynamo and activity cycle, and how magnetic activity is expressed on the solar surface. In this chapter, we will use a transiting exoplanet to study the starspots of a star 7 million times farther away from the Earth than the Sun, the K4 dwarf star HAT-P-11. 
 
@@ -229,7 +241,7 @@ This chapter was first published in the Astrophysical Journal \citep{Morris2017a
 
 \input{stsp_hat_p_11/accepted.tex}
 
-\chapter{The Chromospheric Activity of HAT-P-11: an Unusually Active, Planet-hosting K Dwarf}
+\chapter{The Chromospheric Activity of HAT-P-11: an Unusually Active, Planet-hosting K Dwarf} \label{chap:h11sindex}
 
 In the previous chapter, we opened a window into the stellar magnetic activity of the K4 dwarf HAT-P-11 using its transiting exoplanet. Yet there are several questions that were left unanswered in the previous chapter. From the four years of \kepler photometry alone, it was not possible to build an analog to the solar butterfly diagram, showing the evolution of spot latitudes as a function of time; so one question that remains is -- how long is the full duration of the stellar magnetic activity cycle of HAT-P-11? 
 
@@ -243,15 +255,29 @@ This chapter was first published in the Astrophysical Journal \citep{Morris2017b
 
 \chapter{Spotting Stellar Activity Cycles with Gaia}
 
+In the previous chapters, we have explored the affects of stellar activity on photometry and spectroscopy of active stars. There is a third dimension, in addition time and wavelength, that we can use to probe stellar activity -- astrometry. Stars are \textit{not} point sources, and as starspots rotate into and out of view, the astrometric centroid of a star will appear to shift slightly in response to the localized flux deficits. The astrometric precision required to measure this type of starspot-induced centroid shift is staggering, but may be within reach for the revolutionary ESA \gaia mission, as we will see in this chapter.
+
 This chapter was first published in the Astronomical Journal \citep{Morris2018b}.
 
 \input{gaia/arxiv.tex}
 
 \chapter{Are Starspots and Plages Co-Located on Active G and K Stars?}
 
+In Chapter~\ref{chap:h11} we discovered that the latitude and radius distributions of starspots on HAT-P-11 are similar to the Sun's, and in Chapter~\ref{chap:h11sindex} we found that the chromospheric activity of HAT-P-11 is somewhat elevated compared to stars of similar rotation periods and spectral types. 
+
+We focused on the dark starspots in Chapter~\ref{chap:h11} rather than the bright faculae which are probably present on the star for two reasons: (1) typical faculae have smaller flux contrast in the \kepler band compared to the mean photosphere than a typical starspot; and (2) our light curve inversion software \stsp assumes circular active regions with fixed contrast, which is a better approximation for starspots than it is for regions of faculae, which are often extended and increase in contrast towards the limb of the star. 
+
+In this chapter, we attempt to measure the presence of faculae \textit{and} starspots with simultaneous observations of the \ion{Ca}{2} H \& K emission features -- which are brightest when faculae are facing the observer -- and photometric monitoring in red/optical bandpasses -- which is darkest when the most spotted face of the star faces the observer. 
+
+This chapter was first published in the Astronomical Journal (cite paper). 
+
 \input{nephelion/main.tex}
 
 \chapter{Possible Bright Starspots of TRAPPIST-1}
+
+In the previous chapter, we found that starspots and faculae are likely spatially associated with one another on the active young G star KIC 9652680, while we did not find a convincing correlation between the total flux and chromospheric emission for two mid-K stars in Praesepe, EPIC 211928486 and EPIC 211966629. Despite their broad range in rotation periods, in the broadest sense, these three stars are all ``Sun-like'' stars in that they have similar masses to the Sun, and have both convective and radiative zones, providing for the radiative-convective interface called the tachocline that lies at the heart of the $\alpha\Omega$ dynamo paradigm (refer back to Section~\ref{sec:solardynamo} for a brief review of the solar dynamo). 
+
+In this chapter we seek to infer the stellar surface inhomogeneities of a likely very different star -- TRAPPIST-1 \citep{Gillon2016,Gillon2017}. TRAPPIST-1 is an M8 dwarf, and thus should be fully-convective. Lacking a radiative-convective boundary, the dynamo that powers magnetic activity may be significantly different from the one that operates within the Sun. 
 
 This chapter was first published in the Astronomical Journal \citep{Morris2018c}.
 
@@ -289,11 +315,15 @@ In Part~\ref{part:activity} we discussed observations of stellar magnetic activi
 
 \chapter{Robust Transiting Exoplanet Radii in the Presence of Starspots from Ingress and Egress Durations} \label{chapter:robin}
 
+In Chapter~\ref{chap:h11} we used the transiting exoplanet HAT-P-11 to characterize the starspots that it occulted. In that chapter, we had to take extra care to measure the photometric transit depth from the \kepler photometry, because spot occultations occurred frequently, contaminating most transits towards shallower depths. In this chapter, we address this problem head-on, and posit: suppose you had a star with a dense band of starspots or a bright ring beneath the transit chord of the exoplanet? Such a surface inhomogeneity might be incorrectly interpreted as a smaller or larger planet; but we will find that the ingress and egress durations of transiting exoplanets provide an independent check on the radius of the exoplanet, which is not contaminated by starspots in the transit chord.    
+
 This chapter was first published in the Astronomical Journal \citep{Morris2018e}.
 
 \input{robin/main.tex}
 
 \chapter{Robust Transiting Exoplanet Radii: Revisiting TRAPPIST-1} \label{chapter:robin_trap}
+
+In the previous chapter we developed and applied the ``self-contamination'' technique used to analyze transit light curves of planets which occult spotted stars. In this chapter, we apply the self-contamination technique to recent \spitzer transit observations of TRAPPIST-1 b-h, in order to probe the stellar surface inhomogeneities of TRAPPIST-1.
 
 This chapter was first published in the Astrophysical Journal Letters \citep{Morris2018f}.
 
