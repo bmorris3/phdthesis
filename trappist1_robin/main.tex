@@ -120,10 +120,24 @@ Finally, we confirm the non-detection of spot occultations in the transit light 
 
 
 
-\begin{deluxetable}{lcc}
-\tablecaption{Stellar latitude ranges occulted by each planet, assuming the stellar inclination is $i_\star = 90^\circ$ and the projected spin-orbit angle is $\lambda = 0^\circ$, given the impact parameters and planetary radii from \citet{Delrez2018}. \label{tab}}
-\tablehead{\colhead{Planet} & \colhead{Lower [$^\circ$]} & \colhead{Upper [$^\circ$]}}
-\startdata
+%\begin{deluxetable}{lcc}
+%\tablecaption{Stellar latitude ranges occulted by each planet, assuming the stellar inclination is $i_\star = 90^\circ$ and the projected spin-orbit angle is $\lambda = 0^\circ$, given the impact parameters and planetary radii from \citet{Delrez2018}. \label{tab}}
+%\tablehead{\colhead{Planet} & \colhead{Lower [$^\circ$]} & \colhead{Upper [$^\circ$]}}
+%\startdata
+%b & $4 \pm 4$ & $14 \pm 4$ \\
+%c & $4 \pm 5$ & $13 \pm 5$ \\
+%d & $1 \pm 6$ & $8 \pm 6$ \\
+%e & $10 \pm 3$ & $18 \pm 3$ \\
+%f & $15 \pm 2$ & $25 \pm 3$ \\
+%g & $19 \pm 2$ & $30 \pm 2$ \\
+%h & $19 \pm 2$ & $27 \pm 3$
+%\enddata
+%\end{deluxetable}
+
+\begin{table}
+\centering
+\begin{tabular}{lcc}
+Planet & Lower [$^\circ$] & Upper [$^\circ$] \\ \hline
 b & $4 \pm 4$ & $14 \pm 4$ \\
 c & $4 \pm 5$ & $13 \pm 5$ \\
 d & $1 \pm 6$ & $8 \pm 6$ \\
@@ -131,13 +145,13 @@ e & $10 \pm 3$ & $18 \pm 3$ \\
 f & $15 \pm 2$ & $25 \pm 3$ \\
 g & $19 \pm 2$ & $30 \pm 2$ \\
 h & $19 \pm 2$ & $27 \pm 3$
-\enddata
-\end{deluxetable}
-
+\end{tabular}
+\caption{Stellar latitude ranges occulted by each planet, assuming the stellar inclination is $i_\star = 90^\circ$ and the projected spin-orbit angle is $\lambda = 0^\circ$, given the impact parameters and planetary radii from \citet{Delrez2018}. \label{tab}}
+\end{table}
 
 \begin{figure*}
     \centering
-    \includegraphics[scale=0.8]{trappist1_robin/spots.pdf}
+    \includegraphics[scale=0.7]{trappist1_robin/spots.pdf}
     \caption{{\it Left:} \texttt{STSP} model light curves occulting spots of various radii and the \spitzer photometry of TRAPPIST-1 b. {\it Right:} The corresponding discrepancy between the data and the \texttt{STSP} model for each radius. We find that the photometry is insensitive to spots smaller than $R_\mathrm{spot}/R_\star < 0.04$, which is similar in size to the smallest sunspots -- so small-scale magnetic activity may still be lurking undetected within the transit chords.}
     \label{fig:stsp}
 \end{figure*}
