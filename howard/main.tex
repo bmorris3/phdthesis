@@ -102,9 +102,9 @@ The broad range of possible rotation periods for the Sun is the result of differ
 
 As in \citet{Morris2018b}, we integrate the total flux of the unspotted, limb-darkened Sun,
 \begin{equation}
-F_{\odot, \mathrm{unspotted}} = \int_{0}^{R_\star} 2 \pi r \, I(r) dr,
+F_{\odot, \mathrm{unspotted}} = \frac{1}{d^2}\int_{0}^{R_\star} 2 \pi r \, I(r) dr,
 \end{equation}
-where $I(r)$ is a quadratic limb-darkening law and $r$ is in units of angle, so that $2\pi rdr$ is solid angle.
+where $I(r)$ is a quadratic limb-darkening law, $r$ is in units of angle, and $d$ is the distance to the target, so that $2\pi rdr$ is solid angle.
 
 We define Cartesian sky-plane coordinates $(x,y)$, with the origin placed at the center of the star, $\hat{x}$  aligned with the stellar equator, and $\hat{y}$ aligned with the stellar rotation axis. We describe each starspot with an ellipse with centroid ${\bf r}_i = (x_i, y_i)$, and $r_i = \vert {\bf r}_i \vert$.  We can compute the negative flux contribution from each spot by computing the approximate spot area and contrast. A circular spot will be foreshortened near the stellar limb. The foreshortened circular spot can be approximated with an ellipse with semi-major axis $R_{\mathrm{spot}}$ and semi-minor axis $R_{\mathrm{spot}} \sqrt{1 - (r_i/R_\odot)^2}$. 
 
@@ -112,7 +112,7 @@ Since these spots are small compared to the solar radius ($R_{\mathrm{spot}}/R_\
 
 The integrated spot flux is 
 \begin{equation}
-F_{\mathrm{spot}, i} = - \pi R_{\mathrm{spot}}^2 c_{ld} \sqrt{1 - (r_i/R_\odot)^2}, 
+F_{\mathrm{spot}, i} = - \frac{\pi}{d^2} R_{\mathrm{spot}}^2 c_{ld} \sqrt{1 - (r_i/R_\odot)^2}, 
 \end{equation}
 and accounting for all $N$ spots, the spotted flux of the star is
 \begin{equation}
