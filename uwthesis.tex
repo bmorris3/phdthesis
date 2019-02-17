@@ -206,15 +206,23 @@ The \kepler Mission was a spacecraft devoted to the search for exoplanets, which
 
 The modern era of high cadence, space-borne solar observations began in earnest with the SOHO mission and is continued by the SDO mission today \citep{Domingo1995,Pesnell2012}. These spacecraft record resolved images of the surface of the Sun in (pseudo-)continuum light, as well as magnetograms and dopplergrams. However these spacecraft take no directly analogous measurement to the disk-integrated, red-optical photometry observed for \kepler targets. This may lead one to ask: what does the rotational modulation of the Sun look like? 
 
-To answer this question, we turn to ground-based solar observations. For more than 100 years, observers at the Mount Wilson Observatory have faithfully recorded hand-drawn sketches of the Sun's photosphere in visible light. These sketches are recorded in the base of the Mount Wilson 150 Foot Solar Tower \citep{Hale1912,vanMaanen1917}, marking the area of umbrae and penumbra, and their positions on the solar surface. In 1984, three heliophysicists took up the arduous task of digitizing the sunspot positions and areas for the purpose of measuring solar differential rotation from the motions of sunspots across the solar disk \citep{Howard1984}. In this chapter we will use their sunspot catalog to reconstruct a historical light curve of the Sun, and measure basic properties of the Sun such as its rotation period and activity cycle period using analogous techniques to those applied to \kepler stars.  
+To answer this question, we turn to ground-based solar observations. For more than 100 years, observers at the Mount Wilson Observatory have faithfully recorded hand-drawn sketches of the Sun's photosphere in visible light. These sketches are recorded in the base of the Mount Wilson 150 Foot Solar Tower \citep{Hale1912,vanMaanen1917}, marking the area of umbrae and penumbra, and their positions on the solar surface. In 1984, three heliophysicists took up the arduous task of digitizing the sunspot positions and areas for the purpose of measuring solar differential rotation from the motions of sunspots across the solar disk \citep{Howard1984}. In this chapter we will use their sunspot catalog to reconstruct a historical light curve of the Sun, and measure basic properties of the Sun such as its rotation period and activity cycle period using the same techniques which are applied to \kepler stars.  
 
 This chapter was first published in Monthly Notices of the Royal Astronomical Society \citep{Morris2019a}. 
 
 \input{howard/main.tex}
 
-\chapter{The Stellar Oscillation Noise Floor for Transiting Exoplanet Photometry with PLATO} \label{chap:plato}
+\chapter{The Stellar Variability Noise Floor for Transiting Exoplanet Photometry with PLATO} \label{chap:plato}
+
+In the previous chapter, we devised a technique for observing the Sun as though it were a \kepler target. One successor to the \kepler mission which will observe thousands of Sun-like stars is the PLAnetary Transits and Oscillations (PLATO) mission \citep{Rauer2014}. PLATO is a space-based planet-search survey lasting four years with the goal of searching for Earth-like planets orbiting Sun-like stars, while observing at a short cadence to measure stellar oscillations for asteroseismology. PLATO seeks to use these asteroseismic measurements of its newly-discovered exoplanet host stars to precisely characterize stellar radii, which propagates forward into precision radii of exoplanets.
+
+The photometric signal which allows asteroseismologists to measure a star's properties is also a source of noise which limits the precision of measurements of an exoplanet's radius. In this chapter, we will measure the effects of stellar oscillations and granulation on observations of transiting exoplanets by studying resolved images of the Sun with transits of an Earth-like planet superimposed on the solar images.  
 
 \chapter{Generating Stellar Light Curves with Granulation and Oscillations} \label{chap:astero}
+
+In the previous chapter we found that stellar granulation and oscillations will affect precision photometry of exoplanet host stars for the PLATO mission. Stellar granulation and oscillations should occur on all planet-hosting stars, simultaneously allowing for precision measurements of stellar properties via asteroseismology while limiting the precision of planet radius measurements. 
+
+PLATO is one of several missions which stands to measure planetary radii and stellar oscillations including TESS, CHEOPS and the James Webb Space Telescope (JWST) \citep{Ricker2014,Broeg2013,Beichman2014}. In this chapter, we devise a novel technique for simulating photometry of stars with oscillations and granulation, in preparation for these missions. This technique allows for efficient computation of long-duration, short-cadence, noiseless light curves of Sun-like oscillators by first reproducing the solar variability power spectrum, and then using established asteroseismic scaling relations to generate light curves of other stars. 
 
 \part{Stellar Magnetic Activity} \label{part:activity}
 
