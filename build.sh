@@ -7,8 +7,7 @@ touch log.txt
 rm uwthesis.aux
 rm uwthesis.bbl
 rm uwthesis.blg
-rm uwthesis.lof
 rm uwthesis.log
 rm uwthesis.out
-rm uwthesis.synctex.gz
 rm uwthesis.toc
+open -a Preview.app uwthesis.pdf
