@@ -1,70 +1,3 @@
-%\documentclass[preprint2]{aastex62}
-%
-%\usepackage{natbib}
-%%\bibliographystyle{humannat}
-%\usepackage{xspace}
-%\newcommand{\stsp}{\texttt{STSP}\xspace}
-%\newcommand{\kepler}{\textsl{Kepler}\xspace}
-%\newcommand{\spitzer}{\textsl{Spitzer}\xspace}
-%
-%\usepackage{amsmath}
-%\usepackage{hyperref}
-%\usepackage[footnote,printonlyused]{acronym}
-%\usepackage{scrextend}
-%\deffootnote[1.0em]{1em}{0em}{\textsuperscript{\thefootnotemark}\,\enskip}
-%
-%\shorttitle{TRAPPIST-1, Kepler-62 and -296 planets with JWST/NIRSpec}
-%\shortauthors{Morris et al.}
-%
-%\begin{document}
-%
-%\title{The Limits of Transit Characterization with JWST/NIRSpec due to Stellar Variability: The Cases of TRAPPIST-1, Kepler-296 and Kepler-62}
-%
-%\author[0000-0003-2528-3409]{Brett M. Morris}
-%\affiliation{Astronomy Department, University of Washington, Seattle, WA 98195, USA}
-%
-%\author[0000-0002-0802-9145]{Eric Agol}
-%\altaffiliation{Guggenheim Fellow}
-%\affiliation{Astronomy Department, University of Washington, Seattle, WA 98195, USA}
-%\affiliation{NASA Astrobiology Institute's Virtual Planetary Laboratory, University of Washington, Seattle, Washington 98195, USA} % I added the VPL affiliations -- Andrew
-%
-%\author[0000-0003-0429-9487]{Andrew Lincowski}
-%\affiliation{Astronomy Department, University of Washington, Seattle, WA 98195, USA}
-%\affiliation{NASA Astrobiology Institute's Virtual Planetary Laboratory, University of Washington, Seattle, Washington 98195, USA}
-%
-%\author[0000-0002-0746-1980]{Jacob Lustig-Yaeger}
-%\affiliation{Astronomy Department, University of Washington, Seattle, WA 98195, USA}
-%\affiliation{NASA Astrobiology Institute's Virtual Planetary Laboratory, University of Washington, Seattle, Washington 98195, USA}
-%
-%\author{Victoria Meadows}
-%\affiliation{Astronomy Department, University of Washington, Seattle, WA 98195, USA}
-%\affiliation{NASA Astrobiology Institute's Virtual Planetary Laboratory, University of Washington, Seattle, Washington 98195, USA}
-%
-%\author{Tyler Gordon}
-%\affiliation{Astronomy Department, University of Washington, Seattle, WA 98195, USA}
-%
-%\author[0000-0002-0296-3826]{Rodrigo Luger}
-%\affiliation{Astronomy Department, University of Washington, Seattle, WA 98195, USA}
-%\affiliation{NASA Astrobiology Institute's Virtual Planetary Laboratory, University of Washington, Seattle, Washington 98195, USA}
-%
-%\author{L. Drake Deming}
-%\affiliation{Department of Astronomy, University of Maryland, College Park, MD, USA}
-%\affiliation{NASA Astrobiology Institute's Virtual Planetary Laboratory, University of Washington, Seattle, Washington 98195, USA}
-%
-%
-%\author{Suzanne L. Hawley}
-%\affiliation{Astronomy Department, University of Washington, Seattle, WA 98195, USA}
-%\affiliation{NASA Astrobiology Institute's Virtual Planetary Laboratory, University of Washington, Seattle, Washington 98195, USA} % technically Suzanne was VPL affiliated during the  almost-finished proposal period, though I don't know how often she actually claims it...Andrew
-%
-%\email{morrisbrettm@gmail.com}
-%
-%\begin{abstract}
-%Stellar variability will likely dominate the observational uncertainties on transit parameters in observations of exoplanets. We construct simulated transit spectrophotometry of the active planet hosts TRAPPIST-1, Kepler-296 and Kepler-62 with JWST/NIRSpec, including  time- and wavelength-dependent rotational modulation by starspots and smaller scale ``microvariability.'' We estimate typical transit time and depth uncertainties, which propagate into uncertainties on atmospheric compositions in transmission spectroscopy, and on bulk composition with mass measurements from transit timing variations. We can distinguish between AAA and BBB atmospheres for TRAPPIST-1 b and c with 10 transits; and we predict mass uncertainties of 10\% for Kepler-62 e and f with N transits. 
-%\end{abstract}
-%
-%\object{TRAPPIST-1, Kepler-62, Kepler-296}
-%\keywords{stellar activity, planets: detection, characterization}
-%
 \section{Introduction}
 
 The James Webb Space Telescope (JWST) will offer an early chance to characterize small worlds, through measurements of their bulk densities, and transmission spectroscopy of their atmospheres. The integration times required to produce transmission spectra will be highly expensive, so it's likely that only a handful of small planets will be observed in transmission by JWST with sufficient signal-to-noise to characterize there atmospheres and densities \citep{Cowan2015}.
@@ -140,8 +73,6 @@ JWST's NIRSpec infrared spectrograph has a Bright Object Time Series (BOTS) obse
 Even with this short frame time, some pixels will be saturated by TRAPPIST-1 (J=11.354) for $N_\mathrm{group} > 2$, where $N_\mathrm{group}$ is the number of frames per ``group''. However, we should be able to measure the flux in those pixels with first 2-3 samples up-the-ramp of each group \citep[see also][]{Batalha2018}. We therefore choose to simulate observations of TRAPPIST-1 with $N_\mathrm{group} = 6$, which saturates $<1\%$ of pixels, centered near 1.75 $\mu$m. This observing strategy yields the on-sky observing efficiency 71.4\%. 
 
 For the slightly dimmer Kepler-62 (J=12.256), we also choose to observe with $N_\mathrm{group} = 6$, which is dim enough to avoid saturation. For the significantly dimmer Kepler-296 (J=13.391), we can manage to osberve $N_\mathrm{group} = 18$ without saturating the detector for observing efficiency of 90\%.
-
-[Rodrigo: Some words about intrapixel sensitivity] \citep{Luger2016}
 
 \begin{figure}
     \centering
@@ -222,7 +153,7 @@ The flux deficit technique indicates that in the worst case -- where spots have 
 
 We compute the spotted area on the observable hemisphere of the star using the spot modulation algorithm in \citet{Morris2018b}. The spot model assumes circular spots and quadratic limb-darkening, and uses affine invariant MCMC to fit the light curve for spot radii, positions, and a global spot contrast parameter \citep{Foreman-Mackey2013}. Figure~\ref{fig:stsp_k296} shows a portion of the \kepler light curve of Kepler-296, and draws from the posterior distributions from the model fit. The corresponding maximum-likelihood spot temperature is $\sim 3300$ K, in good agreement with measured spot temperatures of similar M dwarfs \citep{Berdyugina2005}.
 
-When we generate realizations of the star with its spots, we draw from the posterior distributions of the spot radii, contrasts and positions to place spots on the star. For Kepler-296, the long rotation period $P_\mathrm{rot} \sim 36$ d [ is it really true that both Kepler-62 and Kepler-296 both have rotation periods of 36 days?]ensures that stellar rotational modulation does not cause significant variability on transit timescales.
+When we generate realizations of the star with its spots, we draw from the posterior distributions of the spot radii, contrasts and positions to place spots on the star. For Kepler-296, the long rotation period $P_\mathrm{rot} \sim 36$ d ensures that stellar rotational modulation does not cause significant variability on transit timescales.
 
 % \subsubsection{Rotational modulation: TRAPPIST-1}
 
@@ -242,7 +173,8 @@ We choose the nearest IRTF spectral template to the spot temperatures found for 
 
 \subsection{Flares}
 
-The K2 EVEREST light curve of TRAPPIST-1 reveals several flare events \citep{luger2017everest}. We remove the stellar rotation and instrumental systematics by dividing the light curve by itself smoothed with a 31 cadence kernel median-filter. We fit the positive outliers with the \citet{Davenport2014} empirical flare model to solve for the typical flare peak flux and duration of 11 significant flares in the K2 light curve, see Figure~\ref{fig:flares}. In simulated light curves, we sample flares from a Poisson process with a rate of 11 events per 78 days, and draw the peak-flux and duration parameters for each simulated flare from the fits to the observed K2 light curves. We assign the spectrum of a 10,000 K blackbody to each flare \citep{Kowalski2015}.
+The K2 EVEREST light curve of TRAPPIST-1 reveals several flare events \citep{luger2017everest}. We remove the stellar rotation and instrumental systematics by dividing the light curve by itself smoothed with a 31 cadence kernel median-filter. We fit the positive outliers with the \citet{Davenport2014} empirical flare model to solve for the typical flare peak flux and duration of 11 significant flares in the K2 light curve.%, see Figure~\ref{fig:flares}.
+In simulated light curves, we sample flares from a Poisson process with a rate of 11 events per 78 days, and draw the peak-flux and duration parameters for each simulated flare from the fits to the observed K2 light curves. We assign the spectrum of a 10,000 K blackbody to each flare \citep{Kowalski2015}.
 
 Kepler-62 had few significant flare events over the four years of \kepler observations, suggesting that the probability of a flare event occurring during a transit is negligible. 
 
@@ -271,7 +203,7 @@ We model the quasi-periodic oscillations with Gaussian process regression using 
 \label{fig:k62f}
 \end{figure}
 
-For Kepler-62 and Kepler-296, lacking empirical observations of the stellar variability in the near infrared, we must approximate the amplitude and functional form of the microvariability. We measure the microvariability directly by fitting a Gaussian process with an exponential kernel to the \kepler short-cadence light curve at short timescales. Then we must extrapolate the amplitude observed in the \kepler band to the NIRSpec bandpass. We assume that the microvariability is due to stellar granulation \citep{Ludwig2002, Tremblay2013, Trampedach2017}. In this section, we outline an approximation for estimating the amplitude of microvariability due to granulation in the NIRSpec band, given a measurement of the granulation amplitude in the \kepler band.
+For Kepler-62 and Kepler-296, lacking empirical observations of the stellar variability in the near infrared, we must approximate the amplitude and functional form of the microvariability. We measure the microvariability directly by fitting a Gaussian process with an exponential kernel to the \kepler short-cadence light curve at short timescales. Then we must extrapolate the amplitude observed in the \kepler band to the NIRSpec bandpass. We assume that the microvariability is due to stellar granulation \citep{ludwig2002, tremblay2013, Trampedach2017}. In this section, we outline an approximation for estimating the amplitude of microvariability due to granulation in the NIRSpec band, given a measurement of the granulation amplitude in the \kepler band.
 
 Ignoring limb-darkening, let's say a fraction $f_c \ll 1$ of the star is covered by the cool portion of granules with temperature $T_c$, while the remainder of the star we take as having a constant temperature, $T_s$.
 Then, the flux from the star is given by:
@@ -322,9 +254,9 @@ where $f_S(t)$ is the spotted area as a function of time, $F_{\lambda, \mathrm{p
 
 
 Kepler-296 is a binary system with a faint companion M star, so we modify the above equation accordingly:
-\begin{multline}
-\mathcal{F}_{\lambda}(t) = \epsilon ( (\mathcal{T}(t) - f_S(t))F_{\lambda, \mathrm{photo, primary}} +\\f_S(t) F_{\lambda, \mathrm{spot}} ) + (1 - \epsilon) F_{\lambda, \mathrm{photo, secondary}},
-\end{multline}
+\begin{equation}
+\mathcal{F}_{\lambda}(t) = \epsilon ( (\mathcal{T}(t) - f_S(t))F_{\lambda, \mathrm{photo, primary}} + f_S(t) F_{\lambda, \mathrm{spot}} ) + (1 - \epsilon) F_{\lambda, \mathrm{photo, secondary}},
+\end{equation}
 where $\epsilon = 0.785 \pm 0.012$ is the flux dilution factor \citep{Barclay2015}, and $F_{\lambda, \mathrm{photo, secondary}}$ is the spectrum of the secondary star. We assume that the amplitude of the secondary star's rotational variability is small compared to the primary star.
 
 \subsection{Injected transmission spectra}
@@ -376,8 +308,7 @@ We now compute the mass uncertainties on the planets TRAPPIST-1 b and c. First, 
 
 We keep the eccentricities of planets b and c fixed at zero, as analysis by \citet{Luger2017} showed that eccentricities of b and c are tidally damped below $e < 0.01$. We also put Gaussian priors on the masses of each planet with the maximum-likelihood values and standard deviations reported by \citet{Grimm2018}.
 
-By conditioning our TTV fits on the transits of \citet{Grimm2018}, we recover masses for b and c of $M_b = 1.12 \pm 0.17 M_\oplus$ and $M_c = 1.10 \pm 0.15 M_\oplus$ (consistent with the mass prior). Next we project 10 transit times of each planet (consistent with the proposed transmission spectroscopy observations proposed in Section~\ref{sec:transspec}), and recover the masses with \texttt{TTVFast}. The additional ten transits of each planet do little to add to the mass constraints -- the posterior mass distributions for each planet are consistent with the prior from \citet{Grimm2018}, indicating that transit timing variations of planets b and c from JWST are unlikely to yield much more information on the planet masses.  [How much of this mass constraint results from the conditioning?  Is this typical of other draws from the prior conditioned on the current data? -EA] 
-
+By conditioning our TTV fits on the transits of \citet{Grimm2018}, we recover masses for b and c of $M_b = 1.12 \pm 0.17 M_\oplus$ and $M_c = 1.10 \pm 0.15 M_\oplus$ (consistent with the mass prior). Next we project 10 transit times of each planet (consistent with the proposed transmission spectroscopy observations proposed in Section~\ref{sec:transspec}), and recover the masses with \texttt{TTVFast}. The additional ten transits of each planet do little to add to the mass constraints -- the posterior mass distributions for each planet are consistent with the prior from \citet{Grimm2018}, indicating that transit timing variations of planets b and c from JWST are unlikely to yield much more information on the planet masses.  %[How much of this mass constraint results from the conditioning?  Is this typical of other draws from the prior conditioned on the current data? -EA] 
 
 \subsubsection{Kepler-62}
 
@@ -395,7 +326,7 @@ If we instead calculate the mass precisions from TTV measurements accounting for
 
 \begin{figure*}
     \centering
-    \includegraphics[scale=0.8]{libra/ttvs_predicted.pdf}
+    \includegraphics[width=\textwidth]{libra/ttvs_predicted.pdf}
     \caption{Predicted transit times using \texttt{TTVFast} to predict the transit timing variations of Kepler-62 e and f. }
     \label{fig:ttv_predicted}
 \end{figure*}
@@ -412,16 +343,19 @@ If we instead calculate the mass precisions from TTV measurements accounting for
 \includegraphics[scale=0.55]{libra/photon_vs_stellar_noise_bandint_t1.pdf}
 \includegraphics[scale=0.55]{libra/photon_vs_stellar_noise_bandint_k62.pdf}
 \includegraphics[scale=0.55]{libra/photon_vs_stellar_noise_bandint_k296.pdf}
-\caption{Posterior distributions on the mid-transit times and depths given a photon-noise only model, compared with the full stellar activity model. The stellar activity model does little to change the uncertainty on the transit times [that doesn't appear to be true for 296 -EA], but significantly increases the uncertainty on the absolute, band-integrated transit depth.}
+\caption{Posterior distributions on the mid-transit times and depths given a photon-noise only model, compared with the full stellar activity model. The stellar activity model does little to change the uncertainty on the transit times
+but significantly increases the uncertainty on the absolute, band-integrated transit depth for Kepler-62, while the uncertainties in all parameters increase for Kepler-296.}
 \label{fig:photon_noise}
 \end{figure}
 
 \subsection{Bulk Density Precision}
 
-Taking the realistic mass precisions from the previous section accounting for the finite observability of Kepler-62 from JWST, we now estimate the bulk density precision feasible with NIRSpec/Prism given the uncertainties on $R_p/R_\star$ and $M_p$ for Kepler-62 e and f. Figure~\ref{fig:bulkdensity} shows the positions and uncertainties for planets e and f on the mass-radius diagram. The black circles represent the input radii, and masses which were predicted by \texttt{forecaster} and recovered by \texttt{TTVFast} (see previous section). Overplotted are curves for the mass-radius relations for solid exoplanets from \citet{Seager2007}. [The precisions are such that it's likely that the dominant uncertainty on
-the masses and radii of the planets will be the mass and radius of the star, since it is only the ratio of the radii which is measured from the transit depth, and the ratio
-of the masses which is measured from TTVs.  However, the stellar density can be constrained from the duration-period relation of the five planets (Seager \&  Mallen-Ornelas 2002).  Thus, I would expect the posterior distribution of the planetary mass-radius diagram to be {\it highly} correlated - this can be seen in the Grimm et al. 
-paper on Trappist-1, one of my main contributions to the paper.  -EA]
+Taking the realistic mass precisions from the previous section accounting for the finite observability of Kepler-62 from JWST, we now estimate the bulk density precision feasible with NIRSpec/Prism given the uncertainties on $R_p/R_\star$ and $M_p$ for Kepler-62 e and f. Figure~\ref{fig:bulkdensity} shows the positions and uncertainties for planets e and f on the mass-radius diagram. The black circles represent the input radii, and masses which were predicted by \texttt{forecaster} and recovered by \texttt{TTVFast} (see previous section). Overplotted are curves for the mass-radius relations for solid exoplanets from \citet{Seager2007}. In this analysis, we have assumed that the mass and radius of the host star are known with great precision, and the uncertainty in the exoplanet radii and masses are dominated by uncertainties in the transit timing analysis and transit depth. In reality, the mass and radius of Kepler-62 is known to $\sim3\%$, so there will in fact be noticeable correlations between the mass and radius posterior solutions in Figure~\ref{fig:bulkdensity}. 
+
+%[The precisions are such that it's likely that the dominant uncertainty on
+%the masses and radii of the planets will be the mass and radius of the star, since it is only the ratio of the radii which is measured from the transit depth, and the ratio
+%of the masses which is measured from TTVs.  However, the stellar density can be constrained from the duration-period relation of the five planets (Seager \& Mallen-Ornelas 2002).  Thus, I would expect the posterior distribution of the planetary mass-radius diagram to be {\it highly} correlated - this can be seen in the Grimm et al. 
+%paper on Trappist-1, one of my main contributions to the paper.  -EA]
 
 
 \begin{figure}
@@ -438,7 +372,7 @@ We measure transmission spectra by: (1) fitting the band-integrated light curve 
 \begin{figure*}
     \centering
     \includegraphics[scale=0.8]{libra/smart.pdf}
-    \caption{Simulated JWST/NIRSpec Prism transmission spectra of TRAPPIST-1 b with 10 transits.}
+    \caption{Simulated JWST/NIRSpec Prism transmission spectra of TRAPPIST-1 b with 10 transits. The red curve shows the input model spectrum, the gray points show the unbinned transmission spectrum of TRAPPIST-1 b at the native instrument resolution. The black points show the binned spectrum of TRAPPIST-1 b.}
     \label{fig:my_label}
 \end{figure*}
 
@@ -453,8 +387,7 @@ We measure transmission spectra by: (1) fitting the band-integrated light curve 
 
 We compare our stellar variability noise model to the open-source and publicly available PandExo JWST noise model \citep{Batalha2017}. PandExo leverages the STScI's pixel-based signal-to-noise calculator, Pandeia \citep{Pontoppidan2016}, which forms the backbone of the official JWST exposure time calculator (ETC). We refer the reader to \citet{Batalha2017} and \citet{Pontoppidan2016} for a thorough description of PandExo and Pandeia, respectively. Briefly, for each calculation Pandeia simulates a spectral data cube at the pixel level which accounts for background noise, the point-spread-functions, instrument specific throughput and optical paths, pixel saturation levels, ramp noise, correlated read noise, flat field errors, and data extraction. Notably, it does not account to any time-dependent noise sources such as spacecraft drift and jitter or stellar variability. PandExo builds upon Pandeia to calculate transmission spectra of transiting exoplanets by considering in- and out- of transit wavelength dependent fluxes. PandExo does not simulate time-series spectro-photometry, but rather assumes a homogeneous stellar disk such that all in-transit time is equally viable observing time. This neglects the effects of stellar limb darkening and heterogeneous photospheres. 
 
-Figure \ref{fig:pandexo_snr} compares the model we developed in the paper with PandExo for a single transit of TRAPPIST-1 b with the JWST/NIRSpec Prism. For this test, we assume that TRAPPIST-1 b possesses a CO$_2$ dominated cloud-free atmosphere \citep{Lincowski2018}. Both model simulations use the NIRSpec Prism with the SUB512 subarray with 6 groups per integration. The number of groups per integration results in 50 saturated pixels at the end of a ramp, however this allows for an observational efficiency of 71.4\%, compared to 33.3\% with no saturation when only 2 groups per integration are used. We find good agreement between our model and PandExo, with subtle and interesting deviations. Between $1-2.5$ $\mu$m, near the peak of the stellar SED, our model predicts lower S/N transmission spectra than PandExo by up to ${\sim} 25\%$. Beyond 2.5 $\mu$m our model predicts higher S/N than PandExo by ${\sim} 50\%$. We can reconcile these differences by considering that stellar photon noise dominates the transmission spectrum noise budget, so that when we account for the realistic time-dependence of the stellar spectrum we get less optimistic and more realistic noise estimates. At longer wavelengths, the stellar SED decreases as a function of wavelength while the JWST background noise increases \citep{NotSureHere}, (also stellar variability amplitude / spot contrast are lower) which makes PandExo more conservative.
-
+Figure \ref{fig:pandexo_snr} compares the model we developed in the paper with PandExo for a single transit of TRAPPIST-1 b with the JWST/NIRSpec Prism. For this test, we assume that TRAPPIST-1 b possesses a CO$_2$ dominated cloud-free atmosphere \citep{Lincowski2018}. Both model simulations use the NIRSpec Prism with the SUB512 subarray with 6 groups per integration. The number of groups per integration results in 50 saturated pixels at the end of a ramp, however this allows for an observational efficiency of 71.4\%, compared to 33.3\% with no saturation when only 2 groups per integration are used. We find good agreement between our model and PandExo, with subtle and interesting deviations. Between $1-2.5$ $\mu$m, near the peak of the stellar SED, our model predicts lower S/N transmission spectra than PandExo by up to ${\sim} 25\%$. Beyond 2.5 $\mu$m our model predicts higher S/N than PandExo by ${\sim} 50\%$. We can reconcile these differences by considering that stellar photon noise dominates the transmission spectrum noise budget, so that when we account for the realistic time-dependence of the stellar spectrum we get less optimistic and more realistic noise estimates. % At longer wavelengths, the stellar SED decreases as a function of wavelength while the JWST background noise increases, (also stellar variability amplitude / spot contrast are lower) which makes PandExo more conservative.
 Thus we conclude that the transmission spectrum S/N estimates of our simulated observations are consistent with PandExo.
 
 \section{Discussion}
